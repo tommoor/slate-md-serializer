@@ -73,10 +73,8 @@ const RULES = [
           return `| ${children} `;
         case "paragraph":
           return `${addNewLine(children)}`;
-        case "code-block":
-          return `\`\`\`\n${children}\n\`\`\``;
         case "code":
-          return `\`\n${children}\``;
+          return `\`\`\`\n${children}\n\`\`\``;
         case "code-line":
           return `${children}\n`;
         case "block-quote":
