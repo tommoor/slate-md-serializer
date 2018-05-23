@@ -206,8 +206,9 @@ class Markdown {
     }
 
     let children = node.nodes.map(node => this.serializeNode(node, document));
-    children =
-      children.flatten().size === 0 ? "" : children.flatten().join("");
+    children = children.flatten().size === 0
+      ? ""
+      : children.flatten().join("");
 
     for (const rule of this.rules) {
       if (!rule.serialize) continue;
