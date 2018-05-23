@@ -69,7 +69,7 @@ const RULES = [
         case "code-line":
           return `${children}\n`;
         case "block-quote":
-          return `${children.replace(/^/gm, "> ")}`;
+          return `${children.replace(/^/gm, "> ")}\n\n`;
         case "todo-list":
         case "bulleted-list":
         case "ordered-list":
