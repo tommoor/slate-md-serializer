@@ -61,13 +61,15 @@ const RULES = [
         case "table-cell":
           return `| ${children} `;
         case "paragraph":
-          return children;
-        case "code":
+          return `${children}\n\n`;
+        case "code-block":
           return `\`\`\`\n${children}\n\`\`\``;
+        case "code":
+          return `\`\n${children}\``;
         case "code-line":
           return `${children}\n`;
         case "block-quote":
-          return `> ${children}`;
+          return `${children.replace(/^/gm, "> ")}`;
         case "todo-list":
         case "bulleted-list":
         case "ordered-list":
@@ -89,19 +91,17 @@ const RULES = [
           }
         }
         case "heading1":
-          return `# ${children}\n`;
+          return `\n${children.replace(/^/gm, "# ")}\n`;
         case "heading2":
-          return `\n## ${children}\n`;
+          return `\n${children.replace(/^/gm, "## ")}\n`;
         case "heading3":
-          return `\n### ${children}\n`;
+          return `\n${children.replace(/^/gm, "### ")}\n`;
         case "heading4":
-          return `\n#### ${children}\n`;
+          return `\n${children.replace(/^/gm, "#### ")}\n`;
         case "heading5":
-          return `\n##### ${children}\n`;
+          return `\n${children.replace(/^/gm, "##### ")}\n`;
         case "heading6":
-          return `\n###### ${children}\n`;
-        case "heading6":
-          return `\n###### ${children}\n`;
+          return `\n${children.replace(/^/gm, "###### ")}\n`;
         case "horizontal-rule":
           return `---`;
         case "image":
@@ -197,9 +197,8 @@ class Markdown {
     }
 
     let children = node.nodes.map(node => this.serializeNode(node, document));
-    children = children.flatten().length === 0
-      ? ""
-      : children.flatten().join("");
+    children =
+      children.flatten().size === 0 ? "" : children.flatten().join("");
 
     for (const rule of this.rules) {
       if (!rule.serialize) continue;
