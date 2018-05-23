@@ -29,6 +29,17 @@ const RULES = [
       if (obj.object !== "block") return;
       let parent = document.getParent(obj.key);
 
+      // add newline after blocks which must be separated by
+      // newlines - i.e. paragraphs, blockquotes and lists.
+      const addNewLine = (children) => {
+        if (document.getNextSibling(obj.key)) {
+          return children + "\n\n";
+        }
+        else {
+          return children;
+        }
+      };
+
       switch (obj.type) {
         case "table":
           tableHeader = "";
@@ -61,7 +72,7 @@ const RULES = [
         case "table-cell":
           return `| ${children} `;
         case "paragraph":
-          return `${children}\n\n`;
+          return `${addNewLine(children)}`;
         case "code-block":
           return `\`\`\`\n${children}\n\`\`\``;
         case "code":
@@ -69,14 +80,14 @@ const RULES = [
         case "code-line":
           return `${children}\n`;
         case "block-quote":
-          return `${children.replace(/^/gm, "> ")}\n\n`;
+          return `${addNewLine(children.replace(/^/gm, "> "))}`;
         case "todo-list":
         case "bulleted-list":
         case "ordered-list":
           if (parent === document) {
             return children;
           }
-          return `\n${children.replace(/^/gm, "   ")}`;
+          return `\n${addNewLine(children.replace(/^/gm, "   "))}`;
         case "list-item": {
           switch (parent.type) {
             case "ordered-list":
