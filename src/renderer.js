@@ -29,6 +29,17 @@ const RULES = [
       if (obj.object !== "block") return;
       let parent = document.getParent(obj.key);
 
+      // add newline after blocks which must be separated by
+      // newlines - i.e. paragraphs, blockquotes and lists.
+      const addNewLine = (children) => {
+        if (document.getNextSibling(obj.key)) {
+          return children + "\n\n";
+        }
+        else {
+          return children;
+        }
+      };
+
       switch (obj.type) {
         case "table":
           tableHeader = "";
@@ -61,20 +72,20 @@ const RULES = [
         case "table-cell":
           return `| ${children} `;
         case "paragraph":
-          return children;
+          return `${addNewLine(children)}`;
         case "code":
           return `\`\`\`\n${children}\n\`\`\``;
         case "code-line":
           return `${children}\n`;
         case "block-quote":
-          return `> ${children}`;
+          return `${addNewLine(children.replace(/^/gm, "> "))}`;
         case "todo-list":
         case "bulleted-list":
         case "ordered-list":
           if (parent === document) {
             return children;
           }
-          return `\n${children.replace(/^/gm, "   ")}`;
+          return `\n${addNewLine(children.replace(/^/gm, "   "))}`;
         case "list-item": {
           switch (parent.type) {
             case "ordered-list":
@@ -89,19 +100,17 @@ const RULES = [
           }
         }
         case "heading1":
-          return `# ${children}\n`;
+          return `\n${children.replace(/^/gm, "# ")}\n`;
         case "heading2":
-          return `\n## ${children}\n`;
+          return `\n${children.replace(/^/gm, "## ")}\n`;
         case "heading3":
-          return `\n### ${children}\n`;
+          return `\n${children.replace(/^/gm, "### ")}\n`;
         case "heading4":
-          return `\n#### ${children}\n`;
+          return `\n${children.replace(/^/gm, "#### ")}\n`;
         case "heading5":
-          return `\n##### ${children}\n`;
+          return `\n${children.replace(/^/gm, "##### ")}\n`;
         case "heading6":
-          return `\n###### ${children}\n`;
-        case "heading6":
-          return `\n###### ${children}\n`;
+          return `\n${children.replace(/^/gm, "###### ")}\n`;
         case "horizontal-rule":
           return `---`;
         case "image":
@@ -205,7 +214,7 @@ class Markdown {
     }
 
     let children = node.nodes.map(node => this.serializeNode(node, document));
-    children = children.flatten().length === 0
+    children = children.flatten().size === 0
       ? ""
       : children.flatten().join("");
 
