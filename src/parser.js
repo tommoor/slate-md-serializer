@@ -49,18 +49,24 @@ var defaults = {
 
 var block = {
   newline: /^\n+/,
+  image: /^!\[(alt)\]\(src\)/,
   code: /^( {4}[^\n]+\n*)+/,
   fences: noop,
   hr: /^( *[-*_]){3,} *(?:\n|$)/,
   heading: /^ *(#{1,6}) *([^\n]+?) *#* *(?:\n|$)/,
   nptable: noop,
   lheading: /^([^\n]+)\n *(=|-){2,} *(?:\n|$)/,
-  blockquote: /^( *>[^\n]+(\n(?!def)[^\n]+)*(?:\n|$))+/,
+  blockquote: /^( *>[^\n]+(\n(?!def|image)[^\n]+)*(?:\n|$))+/,
   list: /^( *)(bull) [\s\S]+?(?:hr|def|\n(?! )(?!\1bull )\n|\s*$)/,
   def: /^ *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?:\n|$)/,
-  paragraph: /^((?:[^\n]+\n?(?!hr|heading|lheading|blockquote|def))+)(?:\n|$)/,
+  paragraph: /^((?:[^\n]+\n?(?!hr|heading|lheading|blockquote|def|image))+)(?:\n|$)/,
   text: /^[^\n]+/
 };
+
+block._alt = /(?:\[[^\]]*\]|[^\[\]]|\](?=[^\[]*\]))*/;
+block._src = /\s*<?([\s\S]*?)>?(?:\s+['"]([\s\S]*?)['"])?\s*/;
+
+block.image = replace(block.image)("alt", block._alt)("src", block._src)();
 
 block.bullet = /(?:[*+-]|\d+\.|\[[x\s]\])/;
 block.item = /^( *)(bull) [^\n]*(?:\n(?!\1bull )[^\n]*)*/;
@@ -71,7 +77,10 @@ block.list = replace(block.list)(/bull/g, block.bullet)(
   "\\n+(?=\\1?(?:[-*_] *){3,}(?:\\n+|$))"
 )("def", "\\n+(?=" + block.def.source + ")")();
 
-block.blockquote = replace(block.blockquote)("def", block.def)();
+block.blockquote = replace(block.blockquote)("def", block.def)(
+  "image",
+  block.image
+)();
 
 block.paragraph = replace(block.paragraph)("hr", block.hr)(
   "heading",
@@ -79,7 +88,7 @@ block.paragraph = replace(block.paragraph)("hr", block.hr)(
 )("lheading", block.lheading)("blockquote", block.blockquote)(
   "def",
   block.def
-)();
+)("image", block.image)();
 
 /**
  * Normal Block Grammar
@@ -195,6 +204,17 @@ Lexer.prototype.token = function(src, top, bq) {
           });
         }
       }
+    }
+
+    // image
+    if ((cap = this.rules.image.exec(src))) {
+      src = src.substring(cap[0].length);
+      this.tokens.push({
+        type: "image",
+        src: cap[2],
+        alt: cap[1]
+      });
+      continue;
     }
 
     // code
@@ -474,7 +494,7 @@ Lexer.prototype.token = function(src, top, bq) {
 
 var inline = {
   escape: /^\\([\\`*{}\[\]()#+\-.!_>])/,
-  link: /^!?\[(inside)\]\(href\)/,
+  link: /^\[(inside)\]\(href\)/,
   reflink: /^!?\[(inside)\]\s*\[([^\]]*)\]/,
   nolink: /^!?\[((?:\[[^\]]*\]|[^\[\]])*)\]/,
   strong: /^__([\s\S]+?)__(?!_)|^\*\*([\s\S]+?)\*\*(?!\*)/,
@@ -697,9 +717,7 @@ InlineLexer.prototype.outputLink = function(cap, link) {
   var href = link.href;
   var title = link.title;
 
-  return cap[0].charAt(0) !== "!"
-    ? this.renderer.link(href, title, this.parse(cap[1]))
-    : this.renderer.image(href, title, cap[1]);
+  return this.renderer.link(href, title, this.parse(cap[1]));
 };
 ``;
 
@@ -904,14 +922,11 @@ Renderer.prototype.link = function(href, title, childNode) {
   };
 };
 
-Renderer.prototype.image = function(href, title, alt) {
+Renderer.prototype.image = function(src, alt) {
   var data = {
-    src: decode(href)
+    src: decode(src)
   };
 
-  if (title) {
-    data.title = title;
-  }
   if (alt) {
     data.alt = alt;
   }
@@ -1029,6 +1044,9 @@ Parser.prototype.tok = function() {
           }
         ]
       };
+    }
+    case "image": {
+      return this.renderer.image(this.token.src, this.token.alt)
     }
     case "hr": {
       return this.renderer.hr();

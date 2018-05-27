@@ -8,7 +8,7 @@ export function encode(href) {
     .replace(/\)/g, "%29");
 }
 
-export function decode(href: string) {
+export function decode(href) {
   try {
     return decodeURI(href);
   } catch (e) {
