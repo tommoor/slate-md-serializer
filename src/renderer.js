@@ -68,7 +68,8 @@ const RULES = [
         case "code-line":
           return `${children}\n`;
         case "block-quote":
-          return `> ${children}`;
+          // Handle multi-line blockquotes
+          return children.split('\n').map((text) => `> ${text}`).join('\n');
         case "todo-list":
         case "bulleted-list":
         case "ordered-list": {
@@ -213,10 +214,13 @@ class Markdown {
       });
     }
 
-    let children = node.nodes.map(node => this.serializeNode(node, document));
-    children = children.flatten().length === 0
-      ? ""
-      : children.flatten().join("");
+    const children = node.nodes.map((childNode) => {
+      const serialized = this.serializeNode(childNode, document);
+      return ((serialized && serialized.join) ? serialized.join("") : serialized) || "";
+    }).join(
+      // Special case for blockquotes, children in blockquotes are separated by new lines
+      node.type === "block-quote" ? "\n" : ""
+    );
 
     for (const rule of this.rules) {
       if (!rule.serialize) continue;

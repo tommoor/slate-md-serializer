@@ -1094,7 +1094,11 @@ Parser.prototype.tok = function() {
       let body = [];
 
       while (this.next().type !== "blockquote_end") {
-        body.push(this.inline.parse(this.token.text));
+        body.push(
+          this.token.type === "text"
+            ? this.renderer.paragraph(this.inline.parse(this.token.text))
+            : this.tok()
+        );
       }
       return this.renderer.blockquote(body);
     }
