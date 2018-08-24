@@ -2395,6 +2395,32 @@ Array [
             "object": "block",
             "type": "list-item",
           },
+          Object {
+            "data": Object {},
+            "isVoid": false,
+            "nodes": Array [
+              Object {
+                "data": Object {},
+                "isVoid": false,
+                "nodes": Array [
+                  Object {
+                    "leaves": Array [
+                      Object {
+                        "marks": Array [],
+                        "object": "leaf",
+                        "text": "this is the second list item",
+                      },
+                    ],
+                    "object": "text",
+                  },
+                ],
+                "object": "block",
+                "type": "paragraph",
+              },
+            ],
+            "object": "block",
+            "type": "list-item",
+          },
         ],
         "object": "block",
         "type": "ordered-list",

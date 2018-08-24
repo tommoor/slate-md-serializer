@@ -142,6 +142,7 @@ test("parses quote followed by list with quote (outline/#723)", () => {
 1. > this is a list item with a quote
 
 > 1. this is a quote with a list item
+> 2. this is the second list item
 `;
   expect(getNodes(text)).toMatchSnapshot();
 });
