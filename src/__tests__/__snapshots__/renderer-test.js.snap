@@ -2340,7 +2340,7 @@ Array [
                       Object {
                         "marks": Array [],
                         "object": "leaf",
-                        "text": "this is a list item",
+                        "text": "this is a list item with a quote",
                       },
                     ],
                     "object": "text",
@@ -2360,6 +2360,48 @@ Array [
     ],
     "object": "block",
     "type": "ordered-list",
+  },
+  Object {
+    "data": Object {},
+    "isVoid": false,
+    "nodes": Array [
+      Object {
+        "data": Object {},
+        "isVoid": false,
+        "nodes": Array [
+          Object {
+            "data": Object {},
+            "isVoid": false,
+            "nodes": Array [
+              Object {
+                "data": Object {},
+                "isVoid": false,
+                "nodes": Array [
+                  Object {
+                    "leaves": Array [
+                      Object {
+                        "marks": Array [],
+                        "object": "leaf",
+                        "text": "this is a quote with a list item",
+                      },
+                    ],
+                    "object": "text",
+                  },
+                ],
+                "object": "block",
+                "type": "paragraph",
+              },
+            ],
+            "object": "block",
+            "type": "list-item",
+          },
+        ],
+        "object": "block",
+        "type": "ordered-list",
+      },
+    ],
+    "object": "block",
+    "type": "block-quote",
   },
 ]
 `;
