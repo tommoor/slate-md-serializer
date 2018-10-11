@@ -48,9 +48,17 @@ describe("escapeMarkdownChars", () => {
     expect(escapeMarkdownChars(" 1a. item.")).toEqual(" 1a\\. item.");
   });
 
+  test("handles blockquotes", () => {
+    expect(escapeMarkdownChars(" > quote")).toEqual(" \\> quote");
+  });
+
   test("does not escape links", () => {
     expect(escapeMarkdownChars("https://github.com/")).toEqual(
       "https://github.com/"
     );
+  });
+
+  test("does not HTML", () => {
+    expect(escapeMarkdownChars("<br>")).toEqual("<br>");
   });
 });
