@@ -44,6 +44,12 @@ describe("escapeMarkdownChars", () => {
     );
   });
 
+  test("does not escape exclamation points", () => {
+    expect(escapeMarkdownChars("do not escape!")).toEqual(
+      "do not escape!"
+    );
+  });
+
   test("handles ordered list items", () => {
     expect(escapeMarkdownChars(" 1a. item.")).toEqual(" 1a\\. item.");
   });
@@ -58,7 +64,7 @@ describe("escapeMarkdownChars", () => {
     );
   });
 
-  test("does not HTML", () => {
+  test("does not escape HTML", () => {
     expect(escapeMarkdownChars("<br>")).toEqual("<br>");
   });
 });
