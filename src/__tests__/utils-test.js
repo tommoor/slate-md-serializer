@@ -59,8 +59,8 @@ describe("escapeMarkdownChars", () => {
   });
 
   test("does not escape links", () => {
-    expect(escapeMarkdownChars("https://github.com/")).toEqual(
-      "https://github.com/"
+    expect(escapeMarkdownChars("https://github.com/slate-md-serializer")).toEqual(
+      "https://github.com/slate-md-serializer"
     );
   });
 
