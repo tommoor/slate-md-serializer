@@ -48,13 +48,33 @@ describe("escapeMarkdownChars", () => {
     );
   });
 
+  test("does not escape exclamation points", () => {
+    expect(escapeMarkdownChars("do not escape!")).toEqual(
+      "do not escape!"
+    );
+  });
+
+  test("does not escape parenthesis", () => {
+    expect(escapeMarkdownChars("(safe)")).toEqual(
+      "(safe)"
+    );
+  });
+
   test("handles ordered list items", () => {
     expect(escapeMarkdownChars(" 1a. item.")).toEqual(" 1a\\. item.");
   });
 
+  test("handles blockquotes", () => {
+    expect(escapeMarkdownChars(" > quote")).toEqual(" \\> quote");
+  });
+
   test("does not escape links", () => {
-    expect(escapeMarkdownChars("https://github.com/")).toEqual(
-      "https://github.com/"
+    expect(escapeMarkdownChars("https://github.com/slate-md-serializer")).toEqual(
+      "https://github.com/slate-md-serializer"
     );
+  });
+
+  test("does not escape HTML", () => {
+    expect(escapeMarkdownChars("<br>")).toEqual("<br>");
   });
 });
