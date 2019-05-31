@@ -1148,7 +1148,7 @@ Parser.prototype.tok = function() {
       while (this.next().type !== "list_item_end") {
         body.push(
           this.token.type === "text"
-            ? this.renderer.paragraph(this.inline.parse(this.token.text))
+            ? this.inline.parse(this.token.text)
             : this.tok()
         );
       }
