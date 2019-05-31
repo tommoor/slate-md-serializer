@@ -18,13 +18,7 @@ const hashtag = new RegExp(
 const EMPTY_PARAGRAPH_NODES = [
   {
     object: "text",
-    leaves: [
-      {
-        object: "leaf",
-        text: "",
-        marks: []
-      }
-    ]
+    text: ""
   }
 ];
 
@@ -593,11 +587,7 @@ InlineLexer.prototype.parse = function(src) {
       src = src.substring(cap[0].length);
       out.push({
         object: "text",
-        leaves: [
-          {
-            text: cap[1]
-          }
-        ]
+        text: cap[1]
       });
       continue;
     }
@@ -628,11 +618,7 @@ InlineLexer.prototype.parse = function(src) {
       if (!link || !link.href) {
         out.push({
           object: "text",
-          leaves: [
-            {
-              text: cap[0].charAt(0)
-            }
-          ]
+          text: cap[0].charAt(0)
         });
         src = cap[0].substring(1) + src;
         continue;
@@ -729,23 +715,11 @@ function Renderer(options) {
 Renderer.prototype.groupTextInLeaves = function(childNode) {
   let node = flatten(childNode);
   const output = node.reduce((acc, current) => {
-    let accLast = acc.length - 1;
-    let lastIsText =
-      accLast >= 0 && acc[accLast] && acc[accLast]["object"] === "text";
-
     if (current.text) {
-      if (lastIsText) {
-        // If the previous item was a text object, push the current text to it's range
-        acc[accLast].leaves.push(current);
-        return acc;
-      } else {
-        // Else, create a new text object
-        acc.push({
-          object: "text",
-          leaves: [current]
-        });
-        return acc;
-      }
+      acc.push(
+        assign({}, current, {object: "text"})
+      );
+      return acc;
     } else if (current instanceof Array) {
       return acc.concat(this.groupTextInLeaves(current));
     } else {
@@ -931,7 +905,7 @@ Renderer.prototype.hashtag = function(childNode) {
     nodes: [
       {
         object: "text",
-        leaves: [{ text: childNode }]
+        text: childNode
       }
     ]
   };
@@ -1056,11 +1030,7 @@ Parser.prototype.tok = function() {
     case "space": {
       return {
         object: "text",
-        leaves: [
-          {
-            text: ""
-          }
-        ]
+        text: ""
       };
     }
     case "hr": {
@@ -1078,7 +1048,7 @@ Parser.prototype.tok = function() {
         [
           {
             object: "text",
-            leaves: [{ text: this.token.text }]
+            text: this.token.text
           }
         ],
         this.token.lang
@@ -1212,18 +1182,11 @@ const MarkdownParser = {
             nodes: [
               {
                 object: "text",
-                leaves: [
-                  {
-                    object: "leaf",
-                    text: "An error occured:",
-                    marks: []
-                  },
-                  {
-                    object: "leaf",
-                    text: e.message,
-                    marks: []
-                  }
-                ]
+                text: "An error occured:"
+              },
+              {
+                object: "text",
+                text: e.message
               }
             ]
           }

@@ -205,17 +205,13 @@ class Markdown {
 
   serializeNode(node, document) {
     if (node.object == "text") {
-      const leaves = node.getLeaves();
       const inCodeBlock = !!document.getClosest(
         node.key,
         n => n.type === "code"
       );
-
-      return leaves.map(leave => {
-        const inCodeMark = !!leave.marks.filter(mark => mark.type === "code")
-          .size;
-        return this.serializeLeaves(leave, !inCodeBlock && !inCodeMark);
-      });
+      const inCodeMark = !!(node.marks || []).filter(mark => mark.type === "code")
+        .size;
+      return this.serializeLeaves(node, !inCodeBlock && !inCodeMark);
     }
 
     const children = node.nodes
@@ -254,7 +250,7 @@ class Markdown {
     const string = new String({ text: leavesText });
     const text = this.serializeString(string);
 
-    return leaves.marks.reduce((children, mark) => {
+    return (leaves.marks || []).reduce((children, mark) => {
       for (const rule of this.rules) {
         if (!rule.serialize) continue;
         const ret = rule.serialize(mark, children);
