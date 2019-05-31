@@ -714,11 +714,25 @@ function Renderer(options) {
 
 Renderer.prototype.groupTextInLeaves = function(childNode) {
   let node = flatten(childNode);
+  let previousMarks
   const output = node.reduce((acc, current) => {
     if (current.text) {
-      acc.push(
-        assign({}, current, {object: "text"})
-      );
+      let currentMarks = (current.marks || []).map(({type}) => type).join('');
+      let previous = acc.slice(-1)[0];
+      let mergeWithPrevious = previous &&
+        previous.object === 'text' &&
+        currentMarks === previousMarks;
+
+      if (mergeWithPrevious) {
+        previous.text += current.text;
+      } else {
+        previousMarks = currentMarks;
+
+        acc.push(
+          assign({}, current, {object: "text"})
+        );
+      }
+
       return acc;
     } else if (current instanceof Array) {
       return acc.concat(this.groupTextInLeaves(current));
