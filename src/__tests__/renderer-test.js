@@ -10,36 +10,60 @@ function getNodes(text) {
   return reparsed.document.nodes;
 }
 
+// Asserts whether the original Markdown string is the same as the one created
+// by parsing and re-rendering the original.
+function assertSymmetry(text, value) {
+  const parsed = Markdown.deserialize(text);
+  const rendered = Markdown.serialize(parsed);
+  const reparsed = Markdown.deserialize(rendered);
+
+  if (value) {
+    expect(reparsed.toJSON()).toEqual(parsed.toJSON());
+  } else {
+    expect(reparsed.toJSON()).not.toEqual(parsed.toJSON());
+  }
+}
+
 test("parses paragraph", () => {
-  const text = "This is just a sentance";
+  const text = "This is just a sentence";
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
+});
+
+test("parses paragraph with Markdown characters", () => {
+  const text = "This **is** a sen-ten-ce";
+  expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("parses two paragraphs", () => {
   const text = `
-This is the first sentance
-This is the second sentance
+This is the first sentence
+This is the second sentence
 `;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("parses two paragraphs", () => {
   const text = `
-This is the first sentance
+This is the first sentence
 
-This is the second sentance
+This is the second sentence
 `;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("maintains multiple empty paragraphs", () => {
   const text = `
-This is the first sentance
+This is the first sentence
 
 
 Two empty paragraphs above
 `;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("parses heading1", () => {
@@ -81,6 +105,7 @@ a paragraph
 another paragraph
 `;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("parses horizontal rule", () => {
@@ -90,6 +115,7 @@ test("parses horizontal rule", () => {
 a paragraph
 `;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("horizontal rule does not make text above a heading", () => {
@@ -98,6 +124,7 @@ not a heading
 ---
 `;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("horizontal rule does not make text above a heading", () => {
@@ -106,41 +133,49 @@ not a heading
 ===
 `;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("bold mark", () => {
   const text = `**this is bold**`;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("italic mark", () => {
   const text = `*this is italic* _this is italic too_`;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("deleted mark", () => {
   const text = `~~this is strikethrough~~`;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("inserted mark", () => {
   const text = `++inserted text++`;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("underlined mark", () => {
   const text = `__underlined text__`;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("code mark", () => {
   const text = "`const foo = 123;`";
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("code mark with escaped characters", () => {
   const text = "`<script>alert('foo')</script>`";
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("does not escape characters inside of code marks", () => {
@@ -155,6 +190,7 @@ test("parses quote", () => {
 > this is a quote
 `;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("parses quote followed by list with quote (outline/#723)", () => {
@@ -166,6 +202,7 @@ test("parses quote followed by list with quote (outline/#723)", () => {
 > 2. this is the second list item
 `;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("parses quote with newlines and marks", () => {
@@ -176,6 +213,7 @@ test("parses quote with newlines and marks", () => {
 > this is the third part of the quote
 `;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("quotes do not get combined", () => {
@@ -185,6 +223,7 @@ test("quotes do not get combined", () => {
 > this is a different quote
 `;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("quote is not greedy about newlines", () => {
@@ -194,6 +233,7 @@ test("quote is not greedy about newlines", () => {
 this is a paragraph
 `;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("parses list items", () => {
@@ -202,6 +242,7 @@ test("parses list items", () => {
 - two
 `;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("parses nested list items", () => {
@@ -212,6 +253,7 @@ test("parses nested list items", () => {
 
 next para`;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("does not add extra paragraphs around lists", () => {
@@ -223,6 +265,7 @@ first paragraph
 second paragraph
 `;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("parses indented list items", () => {
@@ -231,6 +274,7 @@ test("parses indented list items", () => {
  - two
 `;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("parses list items with marks", () => {
@@ -239,6 +283,7 @@ test("parses list items with marks", () => {
  - *italic* two
 `;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("parses ordered list items", () => {
@@ -247,6 +292,7 @@ test("parses ordered list items", () => {
 1. two
 `;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("parses ordered list items with marks", () => {
@@ -255,6 +301,7 @@ test("parses ordered list items with marks", () => {
 1. *italic* two
 `;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("parses ordered list items with different numbers", () => {
@@ -264,6 +311,7 @@ test("parses ordered list items with different numbers", () => {
 3. three
 `;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("parses mixed list items", () => {
@@ -275,6 +323,7 @@ test("parses mixed list items", () => {
 1. different
 `;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("parses tables", () => {
@@ -286,6 +335,7 @@ test("parses tables", () => {
 | col 3 is | right-aligned |    $1 |
 `;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("tables are not greedy about newlines", () => {
@@ -297,6 +347,7 @@ test("tables are not greedy about newlines", () => {
 a new paragraph
 `;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("parses todo list items", () => {
@@ -305,6 +356,7 @@ test("parses todo list items", () => {
 [x] done
 `;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("parses nested todo list items", () => {
@@ -314,6 +366,7 @@ test("parses nested todo list items", () => {
    [ ] deep
 `;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("parses double nested todo list items", () => {
@@ -325,6 +378,7 @@ test("parses double nested todo list items", () => {
 [ ] three
 `;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("parses todo list items with marks", () => {
@@ -333,6 +387,7 @@ test("parses todo list items with marks", () => {
  [x] more **done**
 `;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("parses ``` code fences", () => {
@@ -345,6 +400,7 @@ function() {
 \`\`\`
 `;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("parses ``` code fences with language", () => {
@@ -357,6 +413,7 @@ function() {
 \`\`\`
 `;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("does not escape characters inside of code blocks", () => {
@@ -371,6 +428,7 @@ function() {
   const parsed = Markdown.deserialize(text);
   const rendered = Markdown.serialize(parsed);
   expect(rendered).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("does not parse marks inside of code blocks", () => {
@@ -380,6 +438,7 @@ This is *not* bold, how about __this__
 \`\`\`
 `;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("does not parse marks around code block boundaries", () => {
@@ -391,11 +450,12 @@ This is *not
 hello \* bold
 `;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("code is not greedy about newlines", () => {
   const text = `
-one sentance
+one sentence
 
 \`\`\`
 const hello = 'world';
@@ -404,9 +464,10 @@ function() {
 }
 \`\`\`
 
-two sentance
+two sentence
 `;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("parses ~~~ code fences", () => {
@@ -419,6 +480,7 @@ function() {
 ~~~
 `;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("parses indented code blocks", () => {
@@ -429,46 +491,55 @@ test("parses indented code blocks", () => {
     }
 `;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("parses hashtag", () => {
   const text = `this is a #hashtag example`;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("parses hashtag ignoring dash", () => {
   const text = `dash should end #hashtag-dash`;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("parses image", () => {
   const text = `![example](http://example.com/logo.png)`;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("parses link", () => {
   const text = `[google](http://google.com)`;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("parses link within mark", () => {
   const text = `**[google](http://google.com)**`;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("parses link with encoded characters", () => {
   const text = `[kibana](https://example.com/app/kibana#/discover?_g=%28refreshInterval:%28%27$$hashKey%27:%27object:1596%27,display:%2710%20seconds%27,pause:!f,section:1,value:10000%29,time:%28from:now-15m,mode:quick,to:now%29%29&_a=%28columns:!%28metadata.step,message,metadata.attempt_f,metadata.tries_f,metadata.error_class,metadata.url%29,index:%27logs-%27,interval:auto,query:%28query_string:%28analyze_wildcard:!t,query:%27metadata.at:%20Stepper*%27%29%29,sort:!%28time,desc%29%29)`;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("parses link with percent symbol", () => {
   const text = `[kibana](https://example.com/app/kibana#/visualize/edit/Requests-%)`;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, true);
 });
 
 test("ignores empty link", () => {
   const text = `[empty]()`;
   expect(getNodes(text)).toMatchSnapshot();
+  assertSymmetry(text, false);
 });
 
 test("parses empty string", () => {
