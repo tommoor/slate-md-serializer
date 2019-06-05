@@ -1,5 +1,5 @@
 {
-  "name": "@edit/slate-md-serializer",
+  "name": "@edithq/slate-md-serializer",
   "version": "1.0.0",
   "description": "",
   "main": "lib/renderer.js",
