@@ -1,6 +1,6 @@
 {
-  "name": "slate-md-serializer",
-  "version": "5.3.3",
+  "name": "@edit/slate-md-serializer",
+  "version": "1.0.0",
   "description": "",
   "main": "lib/renderer.js",
   "scripts": {
@@ -13,7 +13,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/tommoor/slate-md-serializer.git"
+    "url": "git://github.com/edithq/slate-md-serializer.git"
   },
   "peerDependencies": {
     "immutable": ">=3.0.0",
