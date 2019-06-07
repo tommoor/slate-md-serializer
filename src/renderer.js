@@ -202,7 +202,7 @@ class Markdown {
    * @return {String}
    */
 
-  serializeNode(node, document, openMarks = {}, nextNode) {
+  serializeNode(node, document, openMarks = {}, prevNode, nextNode) {
     if (node.object == "text") {
       const inCodeBlock = !!document.getClosest(
         node.key,
@@ -210,12 +210,12 @@ class Markdown {
       );
       const inCodeMark = !!(node.marks || []).filter(mark => mark.type === "code")
         .size;
-      return this.serializeLeaves(node, !inCodeBlock && !inCodeMark, openMarks, nextNode);
+      return this.serializeLeaves(node, !inCodeBlock && !inCodeMark, openMarks, prevNode, nextNode);
     }
 
     const children = node.nodes
       .map((childNode, index) => {
-        const serialized = this.serializeNode(childNode, document, openMarks, node.nodes.get(index + 1));
+        const serialized = this.serializeNode(childNode, document, openMarks, node.nodes.get(index - 1), node.nodes.get(index + 1));
         return (
           (serialized && serialized.join ? serialized.join("") : serialized) ||
           ""
@@ -240,15 +240,25 @@ class Markdown {
    * @return {String}
    */
 
-  serializeLeaves(leaves, escape = true, openMarks, nextNode) {
+  serializeLeaves(leaves, escape = true, openMarks, prevNode, nextNode) {
     let leavesText = leaves.text;
     if (escape) {
       // escape markdown characters
       leavesText = escapeMarkdownChars(leavesText);
     }
     const string = new String({ text: leavesText });
-    const { marks } = leaves;
+    let { marks } = leaves;
     const text = this.serializeString(string);
+
+    if (!marks) return text;
+
+    const prevNodeMarks = prevNode && (prevNode.object === 'text') && prevNode.marks
+      ? prevNode.marks.reduce((hash, mark) => {
+        hash[mark.type] = true
+
+        return hash
+      }, {})
+      : {};
     const nextNodeMarks = nextNode && (nextNode.object === 'text') && nextNode.marks
       ? nextNode.marks.reduce((hash, mark) => {
         hash[mark.type] = true
@@ -257,7 +267,18 @@ class Markdown {
       }, {})
       : {};
 
-    if (!marks) return text;
+    // The order of items in the `marks` array matters. The marks that
+    // transitioned from the previous node should go last. For some reason,
+    // Slate sometimes doesn't respect this order, so we must ensure it by
+    // sorting the array ourselves.
+    if (Object.keys(prevNodeMarks).length && marks) {
+      marks = marks.sort((a, b) => {
+        const prevHasA = prevNodeMarks[a.type] ? 1 : -1
+        const prevHasB = prevNodeMarks[b.type] ? 1 : -1
+
+        return prevHasA - prevHasB
+      })
+    }
 
     return marks.reduce((children, mark) => {
       const close = !nextNodeMarks[mark.type];
