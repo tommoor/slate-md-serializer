@@ -132,15 +132,15 @@ const RULES = [
     }
   },
   {
-    serialize(obj, children) {
+    serialize(obj, children, open, close) {
       if (obj.object !== "mark") return;
       if (!children) return;
 
       switch (obj.type) {
         case "bold":
-          return `**${children}**`;
+          return `${open ? "**" : ""}${children}${close ? "**" : ""}`;
         case "italic":
-          return `_${children}_`;
+          return `${open ? "_" : ""}${children}${close ? "_" : ""}`;
         case "code":
           return `\`${children}\``;
         case "inserted":
@@ -189,7 +189,6 @@ class Markdown {
     const elements = document.nodes.map(node =>
       this.serializeNode(node, document)
     );
-
     const output = elements.join("\n");
 
     // trim beginning whitespace
@@ -203,7 +202,7 @@ class Markdown {
    * @return {String}
    */
 
-  serializeNode(node, document) {
+  serializeNode(node, document, openMarks = {}, nextNode) {
     if (node.object == "text") {
       const inCodeBlock = !!document.getClosest(
         node.key,
@@ -211,12 +210,12 @@ class Markdown {
       );
       const inCodeMark = !!(node.marks || []).filter(mark => mark.type === "code")
         .size;
-      return this.serializeLeaves(node, !inCodeBlock && !inCodeMark);
+      return this.serializeLeaves(node, !inCodeBlock && !inCodeMark, openMarks, nextNode);
     }
 
     const children = node.nodes
-      .map(childNode => {
-        const serialized = this.serializeNode(childNode, document);
+      .map((childNode, index) => {
+        const serialized = this.serializeNode(childNode, document, openMarks, node.nodes.get(index + 1));
         return (
           (serialized && serialized.join ? serialized.join("") : serialized) ||
           ""
@@ -241,19 +240,34 @@ class Markdown {
    * @return {String}
    */
 
-  serializeLeaves(leaves, escape = true) {
+  serializeLeaves(leaves, escape = true, openMarks, nextNode) {
     let leavesText = leaves.text;
     if (escape) {
       // escape markdown characters
       leavesText = escapeMarkdownChars(leavesText);
     }
     const string = new String({ text: leavesText });
+    const { marks } = leaves;
     const text = this.serializeString(string);
+    const nextNodeMarks = nextNode && (nextNode.object === 'text') && nextNode.marks
+      ? nextNode.marks.reduce((hash, mark) => {
+        hash[mark.type] = true
 
-    return (leaves.marks || []).reduce((children, mark) => {
+        return hash
+      }, {})
+      : {};
+
+    if (!marks) return text;
+
+    return marks.reduce((children, mark) => {
+      const close = !nextNodeMarks[mark.type];
+      const open = !openMarks[mark.type];
+
+      openMarks[mark.type] = nextNodeMarks[mark.type];
+
       for (const rule of this.rules) {
         if (!rule.serialize) continue;
-        const ret = rule.serialize(mark, children);
+        const ret = rule.serialize(mark, children, open, close);
         if (ret) return ret;
       }
     }, text);

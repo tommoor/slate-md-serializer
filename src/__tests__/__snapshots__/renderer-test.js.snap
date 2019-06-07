@@ -23,6 +23,66 @@ Array [
 ]
 `;
 
+exports[`bold mark inside italic mark 1`] = `
+Array [
+  Object {
+    "data": Object {},
+    "nodes": Array [
+      Object {
+        "marks": Array [],
+        "object": "text",
+        "text": "nothing ",
+      },
+      Object {
+        "marks": Array [
+          Object {
+            "data": Object {},
+            "object": "mark",
+            "type": "italic",
+          },
+        ],
+        "object": "text",
+        "text": "italic and ",
+      },
+      Object {
+        "marks": Array [
+          Object {
+            "data": Object {},
+            "object": "mark",
+            "type": "bold",
+          },
+          Object {
+            "data": Object {},
+            "object": "mark",
+            "type": "italic",
+          },
+        ],
+        "object": "text",
+        "text": "bold",
+      },
+      Object {
+        "marks": Array [
+          Object {
+            "data": Object {},
+            "object": "mark",
+            "type": "italic",
+          },
+        ],
+        "object": "text",
+        "text": " and",
+      },
+      Object {
+        "marks": Array [],
+        "object": "text",
+        "text": " nothing",
+      },
+    ],
+    "object": "block",
+    "type": "paragraph",
+  },
+]
+`;
+
 exports[`code is not greedy about newlines 1`] = `
 Array [
   Object {
@@ -586,6 +646,66 @@ Array [
 ]
 `;
 
+exports[`italic mark inside bold mark 1`] = `
+Array [
+  Object {
+    "data": Object {},
+    "nodes": Array [
+      Object {
+        "marks": Array [],
+        "object": "text",
+        "text": "nothing ",
+      },
+      Object {
+        "marks": Array [
+          Object {
+            "data": Object {},
+            "object": "mark",
+            "type": "bold",
+          },
+        ],
+        "object": "text",
+        "text": "bold and ",
+      },
+      Object {
+        "marks": Array [
+          Object {
+            "data": Object {},
+            "object": "mark",
+            "type": "italic",
+          },
+          Object {
+            "data": Object {},
+            "object": "mark",
+            "type": "bold",
+          },
+        ],
+        "object": "text",
+        "text": "italic",
+      },
+      Object {
+        "marks": Array [
+          Object {
+            "data": Object {},
+            "object": "mark",
+            "type": "bold",
+          },
+        ],
+        "object": "text",
+        "text": " and",
+      },
+      Object {
+        "marks": Array [],
+        "object": "text",
+        "text": " nothing",
+      },
+    ],
+    "object": "block",
+    "type": "paragraph",
+  },
+]
+`;
+
 exports[`maintains multiple empty paragraphs 1`] = `
 Array [
   Object {
@@ -877,6 +997,72 @@ Array [
         "marks": Array [],
         "object": "text",
         "text": "Heading",
+      },
+    ],
+    "object": "block",
+    "type": "heading1",
+  },
+]
+`;
+
+exports[`parses heading1 with bold mark 1`] = `
+Array [
+  Object {
+    "data": Object {},
+    "nodes": Array [
+      Object {
+        "marks": Array [],
+        "object": "text",
+        "text": "Heading ",
+      },
+      Object {
+        "marks": Array [
+          Object {
+            "data": Object {},
+            "object": "mark",
+            "type": "bold",
+          },
+        ],
+        "object": "text",
+        "text": "bold",
+      },
+      Object {
+        "marks": Array [],
+        "object": "text",
+        "text": " not bold",
+      },
+    ],
+    "object": "block",
+    "type": "heading1",
+  },
+]
+`;
+
+exports[`parses heading1 with italic mark 1`] = `
+Array [
+  Object {
+    "data": Object {},
+    "nodes": Array [
+      Object {
+        "marks": Array [],
+        "object": "text",
+        "text": "Heading ",
+      },
+      Object {
+        "marks": Array [
+          Object {
+            "data": Object {},
+            "object": "mark",
+            "type": "italic",
+          },
+        ],
+        "object": "text",
+        "text": "italic",
+      },
+      Object {
+        "marks": Array [],
+        "object": "text",
+        "text": " not italic",
       },
     ],
     "object": "block",

@@ -22,6 +22,8 @@ function assertSymmetry(text, value) {
   } else {
     expect(reparsed.toJSON()).not.toEqual(parsed.toJSON());
   }
+
+  return rendered
 }
 
 test("parses paragraph", () => {
@@ -96,6 +98,20 @@ test("parses heading6", () => {
   expect(output.document.nodes).toMatchSnapshot();
 });
 
+test("parses heading1 with italic mark", () => {
+  const text = "# Heading *italic* not italic"
+  const output = Markdown.deserialize(text);
+  expect(output.document.nodes).toMatchSnapshot();
+  assertSymmetry(text, true);
+});
+
+test("parses heading1 with bold mark", () => {
+  const text = "# Heading **bold** not bold"
+  const output = Markdown.deserialize(text);
+  expect(output.document.nodes).toMatchSnapshot();
+  assertSymmetry(text, true);
+});
+
 test("headings are not greedy about newlines", () => {
   const text = `
 a paragraph
@@ -146,6 +162,24 @@ test("italic mark", () => {
   const text = `*this is italic* _this is italic too_`;
   expect(getNodes(text)).toMatchSnapshot();
   assertSymmetry(text, true);
+});
+
+test("bold mark inside italic mark", () => {
+  const text = 'nothing _italic and **bold** and_ nothing'
+  
+  expect(getNodes(text)).toMatchSnapshot();
+  const rendered = assertSymmetry(text, true);
+
+  expect(rendered).toEqual(text);
+});
+
+test("italic mark inside bold mark", () => {
+  const text = 'nothing **bold and _italic_ and** nothing'
+  
+  expect(getNodes(text)).toMatchSnapshot();
+  const rendered = assertSymmetry(text, true);
+
+  expect(rendered).toEqual(text);
 });
 
 test("deleted mark", () => {

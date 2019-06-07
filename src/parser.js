@@ -573,10 +573,24 @@ InlineLexer.parse = function(src, links, options) {
 };
 
 /**
+ * Apply a trail of open marks to a node.
+ */
+
+InlineLexer.prototype.applyTrailMarks = function (nodes, trail, allowedMarks) {
+  trail.forEach(mark => {
+    if (Array.isArray(allowedMarks) && !allowedMarks.includes(mark)) {
+      return
+    }
+
+    this.renderer[mark](nodes)
+  })
+}
+
+/**
  * Lexing/Compiling
  */
 
-InlineLexer.prototype.parse = function(src) {
+InlineLexer.prototype.parse = function(src, trail = []) {
   var out = [];
   var link;
   var cap;
@@ -637,14 +651,18 @@ InlineLexer.prototype.parse = function(src) {
     // strong
     if ((cap = this.rules.strong.exec(src))) {
       src = src.substring(cap[0].length);
-      out.push(this.renderer.strong(this.parse(cap[2] || cap[1])));
+      const rendered = this.renderer.strong(this.parse(cap[2] || cap[1], trail.concat('strong')));
+      this.applyTrailMarks(rendered, trail, ['em']);
+      out.push(rendered);
       continue;
     }
 
     // em
     if ((cap = this.rules.em.exec(src))) {
       src = src.substring(cap[0].length);
-      out.push(this.renderer.em(this.parse(cap[2] || cap[1])));
+      const rendered = this.renderer.em(this.parse(cap[2] || cap[1], trail.concat('em')));
+      this.applyTrailMarks(rendered, trail, ['strong']);
+      out.push(rendered);
       continue;
     }
 
@@ -714,20 +732,19 @@ function Renderer(options) {
 
 Renderer.prototype.groupTextInLeaves = function(childNode) {
   let node = flatten(childNode);
-  let previousMarks
   const output = node.reduce((acc, current) => {
     if (current.text) {
-      let currentMarks = (current.marks || []).map(({type}) => type).join('');
       let previous = acc.slice(-1)[0];
-      let mergeWithPrevious = previous &&
-        previous.object === 'text' &&
-        currentMarks === previousMarks;
+      let previousMarks = (previous && previous.object === 'text')
+        ?  (previous.marks || []).map(({type}) => type).join('')
+        : null;
+      let currentMarks = previousMarks !== null
+        ? (current.marks || []).map(({type}) => type).join('')
+        : null;
 
-      if (mergeWithPrevious) {
+      if (previousMarks !== null && previousMarks === currentMarks) {
         previous.text += current.text;
       } else {
-        previousMarks = currentMarks;
-
         acc.push(
           assign({}, current, {object: "text"})
         );
