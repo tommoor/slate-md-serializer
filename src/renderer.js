@@ -132,15 +132,15 @@ const RULES = [
     }
   },
   {
-    serialize(obj, children) {
+    serialize(obj, children, open, close) {
       if (obj.object !== "mark") return;
       if (!children) return;
 
       switch (obj.type) {
         case "bold":
-          return `**${children}**`;
+          return `${open ? "**" : ""}${children}${close ? "**" : ""}`;
         case "italic":
-          return `_${children}_`;
+          return `${open ? "_" : ""}${children}${close ? "_" : ""}`;
         case "code":
           return `\`${children}\``;
         case "inserted":
@@ -189,7 +189,6 @@ class Markdown {
     const elements = document.nodes.map(node =>
       this.serializeNode(node, document)
     );
-
     const output = elements.join("\n");
 
     // trim beginning whitespace
@@ -203,24 +202,20 @@ class Markdown {
    * @return {String}
    */
 
-  serializeNode(node, document) {
+  serializeNode(node, document, openMarks = {}, prevNode, nextNode) {
     if (node.object == "text") {
-      const leaves = node.getLeaves();
       const inCodeBlock = !!document.getClosest(
         node.key,
         n => n.type === "code"
       );
-
-      return leaves.map(leave => {
-        const inCodeMark = !!leave.marks.filter(mark => mark.type === "code")
-          .size;
-        return this.serializeLeaves(leave, !inCodeBlock && !inCodeMark);
-      });
+      const inCodeMark = !!(node.marks || []).filter(mark => mark.type === "code")
+        .size;
+      return this.serializeLeaves(node, !inCodeBlock && !inCodeMark, openMarks, prevNode, nextNode);
     }
 
     const children = node.nodes
-      .map(childNode => {
-        const serialized = this.serializeNode(childNode, document);
+      .map((childNode, index) => {
+        const serialized = this.serializeNode(childNode, document, openMarks, node.nodes.get(index - 1), node.nodes.get(index + 1));
         return (
           (serialized && serialized.join ? serialized.join("") : serialized) ||
           ""
@@ -245,19 +240,55 @@ class Markdown {
    * @return {String}
    */
 
-  serializeLeaves(leaves, escape = true) {
+  serializeLeaves(leaves, escape = true, openMarks, prevNode, nextNode) {
     let leavesText = leaves.text;
     if (escape) {
       // escape markdown characters
       leavesText = escapeMarkdownChars(leavesText);
     }
     const string = new String({ text: leavesText });
+    let { marks } = leaves;
     const text = this.serializeString(string);
 
-    return leaves.marks.reduce((children, mark) => {
+    if (!marks) return text;
+
+    const prevNodeMarks = prevNode && (prevNode.object === 'text') && prevNode.marks
+      ? prevNode.marks.reduce((hash, mark) => {
+        hash[mark.type] = true
+
+        return hash
+      }, {})
+      : {};
+    const nextNodeMarks = nextNode && (nextNode.object === 'text') && nextNode.marks
+      ? nextNode.marks.reduce((hash, mark) => {
+        hash[mark.type] = true
+
+        return hash
+      }, {})
+      : {};
+
+    // The order of items in the `marks` array matters. The marks that
+    // transitioned from the previous node should go last. For some reason,
+    // Slate sometimes doesn't respect this order, so we must ensure it by
+    // sorting the array ourselves.
+    if (Object.keys(prevNodeMarks).length && marks) {
+      marks = marks.sort((a, b) => {
+        const prevHasA = prevNodeMarks[a.type] ? 1 : -1
+        const prevHasB = prevNodeMarks[b.type] ? 1 : -1
+
+        return prevHasA - prevHasB
+      })
+    }
+
+    return marks.reduce((children, mark) => {
+      const close = !nextNodeMarks[mark.type];
+      const open = !openMarks[mark.type];
+
+      openMarks[mark.type] = nextNodeMarks[mark.type];
+
       for (const rule of this.rules) {
         if (!rule.serialize) continue;
-        const ret = rule.serialize(mark, children);
+        const ret = rule.serialize(mark, children, open, close);
         if (ret) return ret;
       }
     }, text);

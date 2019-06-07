@@ -18,13 +18,7 @@ const hashtag = new RegExp(
 const EMPTY_PARAGRAPH_NODES = [
   {
     object: "text",
-    leaves: [
-      {
-        object: "leaf",
-        text: "",
-        marks: []
-      }
-    ]
+    text: ""
   }
 ];
 
@@ -579,10 +573,24 @@ InlineLexer.parse = function(src, links, options) {
 };
 
 /**
+ * Apply a trail of open marks to a node.
+ */
+
+InlineLexer.prototype.applyTrailMarks = function (nodes, trail, allowedMarks) {
+  trail.forEach(mark => {
+    if (Array.isArray(allowedMarks) && !allowedMarks.includes(mark)) {
+      return
+    }
+
+    this.renderer[mark](nodes)
+  })
+}
+
+/**
  * Lexing/Compiling
  */
 
-InlineLexer.prototype.parse = function(src) {
+InlineLexer.prototype.parse = function(src, trail = []) {
   var out = [];
   var link;
   var cap;
@@ -593,11 +601,7 @@ InlineLexer.prototype.parse = function(src) {
       src = src.substring(cap[0].length);
       out.push({
         object: "text",
-        leaves: [
-          {
-            text: cap[1]
-          }
-        ]
+        text: cap[1]
       });
       continue;
     }
@@ -628,11 +632,7 @@ InlineLexer.prototype.parse = function(src) {
       if (!link || !link.href) {
         out.push({
           object: "text",
-          leaves: [
-            {
-              text: cap[0].charAt(0)
-            }
-          ]
+          text: cap[0].charAt(0)
         });
         src = cap[0].substring(1) + src;
         continue;
@@ -651,14 +651,18 @@ InlineLexer.prototype.parse = function(src) {
     // strong
     if ((cap = this.rules.strong.exec(src))) {
       src = src.substring(cap[0].length);
-      out.push(this.renderer.strong(this.parse(cap[2] || cap[1])));
+      const rendered = this.renderer.strong(this.parse(cap[2] || cap[1], trail.concat('strong')));
+      this.applyTrailMarks(rendered, trail, ['em']);
+      out.push(rendered);
       continue;
     }
 
     // em
     if ((cap = this.rules.em.exec(src))) {
       src = src.substring(cap[0].length);
-      out.push(this.renderer.em(this.parse(cap[2] || cap[1])));
+      const rendered = this.renderer.em(this.parse(cap[2] || cap[1], trail.concat('em')));
+      this.applyTrailMarks(rendered, trail, ['strong']);
+      out.push(rendered);
       continue;
     }
 
@@ -729,23 +733,24 @@ function Renderer(options) {
 Renderer.prototype.groupTextInLeaves = function(childNode) {
   let node = flatten(childNode);
   const output = node.reduce((acc, current) => {
-    let accLast = acc.length - 1;
-    let lastIsText =
-      accLast >= 0 && acc[accLast] && acc[accLast]["object"] === "text";
-
     if (current.text) {
-      if (lastIsText) {
-        // If the previous item was a text object, push the current text to it's range
-        acc[accLast].leaves.push(current);
-        return acc;
+      let previous = acc.slice(-1)[0];
+      let previousMarks = (previous && previous.object === 'text')
+        ?  (previous.marks || []).map(({type}) => type).join('')
+        : null;
+      let currentMarks = previousMarks !== null
+        ? (current.marks || []).map(({type}) => type).join('')
+        : null;
+
+      if (previousMarks !== null && previousMarks === currentMarks) {
+        previous.text += current.text;
       } else {
-        // Else, create a new text object
-        acc.push({
-          object: "text",
-          leaves: [current]
-        });
-        return acc;
+        acc.push(
+          assign({}, current, {object: "text"})
+        );
       }
+
+      return acc;
     } else if (current instanceof Array) {
       return acc.concat(this.groupTextInLeaves(current));
     } else {
@@ -931,7 +936,7 @@ Renderer.prototype.hashtag = function(childNode) {
     nodes: [
       {
         object: "text",
-        leaves: [{ text: childNode }]
+        text: childNode
       }
     ]
   };
@@ -1056,11 +1061,7 @@ Parser.prototype.tok = function() {
     case "space": {
       return {
         object: "text",
-        leaves: [
-          {
-            text: ""
-          }
-        ]
+        text: ""
       };
     }
     case "hr": {
@@ -1078,7 +1079,7 @@ Parser.prototype.tok = function() {
         [
           {
             object: "text",
-            leaves: [{ text: this.token.text }]
+            text: this.token.text
           }
         ],
         this.token.lang
@@ -1148,7 +1149,7 @@ Parser.prototype.tok = function() {
       while (this.next().type !== "list_item_end") {
         body.push(
           this.token.type === "text"
-            ? this.renderer.paragraph(this.inline.parse(this.token.text))
+            ? this.inline.parse(this.token.text)
             : this.tok()
         );
       }
@@ -1212,18 +1213,11 @@ const MarkdownParser = {
             nodes: [
               {
                 object: "text",
-                leaves: [
-                  {
-                    object: "leaf",
-                    text: "An error occured:",
-                    marks: []
-                  },
-                  {
-                    object: "leaf",
-                    text: e.message,
-                    marks: []
-                  }
-                ]
+                text: "An error occured:"
+              },
+              {
+                object: "text",
+                text: e.message
               }
             ]
           }
