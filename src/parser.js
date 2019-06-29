@@ -1238,7 +1238,6 @@ const MarkdownParser = {
 };
 
 function splitCells(tableRow) {
-  console.log(tableRow);
   var cells = tableRow.replace(/([^\\])\|/g, "$1 |").split(/ +\| */), i = 0;
 
   for (; i < cells.length; i++) {
