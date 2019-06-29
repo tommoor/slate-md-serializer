@@ -16,6 +16,7 @@ const String = new Record({
  */
 
 let tableHeader = "";
+let firstRow = true;
 
 const RULES = [
   {
@@ -33,10 +34,11 @@ const RULES = [
       switch (obj.type) {
         case "table":
           tableHeader = "";
+          firstRow = true;
 
           // trim removes trailing newline
           return children.trim();
-        case "table-head": {
+        case "table-cell": {
           switch (obj.getIn(["data", "align"])) {
             case "left":
               tableHeader += "|:--- ";
@@ -54,13 +56,12 @@ const RULES = [
         }
         case "table-row":
           let output = "";
-          if (tableHeader) {
+          if (firstRow) {
             output = `${tableHeader}|\n`;
             tableHeader = "";
+            firstRow = false;
           }
           return `${children}|\n${output}`;
-        case "table-cell":
-          return `| ${children} `;
         case "paragraph":
           return children;
         case "code": {

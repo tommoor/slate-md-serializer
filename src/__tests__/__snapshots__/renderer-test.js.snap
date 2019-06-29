@@ -2719,7 +2719,7 @@ Array [
               },
             ],
             "object": "block",
-            "type": "table-head",
+            "type": "table-cell",
           },
           Object {
             "data": Object {
@@ -2738,7 +2738,7 @@ Array [
               },
             ],
             "object": "block",
-            "type": "table-head",
+            "type": "table-cell",
           },
           Object {
             "data": Object {
@@ -2757,7 +2757,7 @@ Array [
               },
             ],
             "object": "block",
-            "type": "table-head",
+            "type": "table-cell",
           },
         ],
         "object": "block",
@@ -3377,6 +3377,180 @@ Array [
 ]
 `;
 
+exports[`tables allow escaped pipes within 1`] = `
+Array [
+  Object {
+    "data": Object {},
+    "nodes": Array [
+      Object {
+        "data": Object {},
+        "nodes": Array [
+          Object {
+            "data": Object {
+              "align": null,
+            },
+            "nodes": Array [
+              Object {
+                "leaves": Array [
+                  Object {
+                    "marks": Array [],
+                    "object": "leaf",
+                    "text": "Tables",
+                  },
+                ],
+                "object": "text",
+              },
+            ],
+            "object": "block",
+            "type": "table-cell",
+          },
+          Object {
+            "data": Object {
+              "align": "center",
+            },
+            "nodes": Array [
+              Object {
+                "leaves": Array [
+                  Object {
+                    "marks": Array [],
+                    "object": "leaf",
+                    "text": "Are",
+                  },
+                ],
+                "object": "text",
+              },
+            ],
+            "object": "block",
+            "type": "table-cell",
+          },
+          Object {
+            "data": Object {
+              "align": "right",
+            },
+            "nodes": Array [
+              Object {
+                "leaves": Array [
+                  Object {
+                    "marks": Array [],
+                    "object": "leaf",
+                    "text": "Cool",
+                  },
+                ],
+                "object": "text",
+              },
+            ],
+            "object": "block",
+            "type": "table-cell",
+          },
+        ],
+        "object": "block",
+        "type": "table-row",
+      },
+      Object {
+        "data": Object {},
+        "nodes": Array [
+          Object {
+            "data": Object {
+              "align": null,
+            },
+            "nodes": Array [
+              Object {
+                "leaves": Array [
+                  Object {
+                    "marks": Array [],
+                    "object": "leaf",
+                    "text": "col has",
+                  },
+                ],
+                "object": "text",
+              },
+            ],
+            "object": "block",
+            "type": "table-cell",
+          },
+          Object {
+            "data": Object {
+              "align": "center",
+            },
+            "nodes": Array [
+              Object {
+                "leaves": Array [
+                  Object {
+                    "marks": Array [],
+                    "object": "leaf",
+                    "text": "|pipes |",
+                  },
+                ],
+                "object": "text",
+              },
+            ],
+            "object": "block",
+            "type": "table-cell",
+          },
+          Object {
+            "data": Object {
+              "align": "right",
+            },
+            "nodes": Array [
+              Object {
+                "leaves": Array [
+                  Object {
+                    "marks": Array [],
+                    "object": "leaf",
+                    "text": "inside",
+                  },
+                ],
+                "object": "text",
+              },
+            ],
+            "object": "block",
+            "type": "table-cell",
+          },
+        ],
+        "object": "block",
+        "type": "table-row",
+      },
+    ],
+    "object": "block",
+    "type": "table",
+  },
+  Object {
+    "data": Object {},
+    "nodes": Array [
+      Object {
+        "leaves": Array [
+          Object {
+            "marks": Array [],
+            "object": "leaf",
+            "text": "",
+          },
+        ],
+        "object": "text",
+      },
+    ],
+    "object": "block",
+    "type": "paragraph",
+  },
+  Object {
+    "data": Object {},
+    "nodes": Array [
+      Object {
+        "leaves": Array [
+          Object {
+            "marks": Array [],
+            "object": "leaf",
+            "text": "a new paragraph",
+          },
+        ],
+        "object": "text",
+      },
+    ],
+    "object": "block",
+    "type": "paragraph",
+  },
+]
+`;
+
 exports[`tables are not greedy about newlines 1`] = `
 Array [
   Object {
@@ -3402,7 +3576,7 @@ Array [
               },
             ],
             "object": "block",
-            "type": "table-head",
+            "type": "table-cell",
           },
           Object {
             "data": Object {
@@ -3421,7 +3595,7 @@ Array [
               },
             ],
             "object": "block",
-            "type": "table-head",
+            "type": "table-cell",
           },
           Object {
             "data": Object {
@@ -3440,7 +3614,7 @@ Array [
               },
             ],
             "object": "block",
-            "type": "table-head",
+            "type": "table-cell",
           },
         ],
         "object": "block",

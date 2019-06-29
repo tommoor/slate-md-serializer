@@ -257,7 +257,7 @@ Lexer.prototype.token = function(src, top, bq) {
 
       item = {
         type: "table",
-        header: cap[1].replace(/^ *| *\| *$/g, "").split(/ *\| */),
+        header: splitCells(cap[1].replace(/^ *| *\| *$/g, "")),
         align: cap[2].replace(/^ *|\| *$/g, "").split(/ *\| */),
         cells: cap[3].replace(/\n$/, "").split("\n")
       };
@@ -275,7 +275,7 @@ Lexer.prototype.token = function(src, top, bq) {
       }
 
       for (i = 0; i < item.cells.length; i++) {
-        item.cells[i] = item.cells[i].split(/ *\| */);
+        item.cells[i] = splitCells(item.cells[i]);
       }
 
       this.tokens.push(item);
@@ -408,7 +408,7 @@ Lexer.prototype.token = function(src, top, bq) {
 
       item = {
         type: "table",
-        header: cap[1].replace(/^ *| *\| *$/g, "").split(/ *\| */),
+        header: splitCells(cap[1].replace(/^ *| *\| *$/g, "")),
         align: cap[2].replace(/^ *|\| *$/g, "").split(/ *\| */),
         cells: cap[3].replace(/(?: *\| *)?\n$/, "").split("\n")
       };
@@ -426,9 +426,9 @@ Lexer.prototype.token = function(src, top, bq) {
       }
 
       for (i = 0; i < item.cells.length; i++) {
-        item.cells[i] = item.cells[i]
-          .replace(/^ *\| *| *\| *$/g, "")
-          .split(/ *\| */);
+        item.cells[i] = splitCells(
+          item.cells[i].replace(/^ *\| *| *\| *$/g, "")
+        );
       }
 
       this.tokens.push(item);
@@ -850,7 +850,7 @@ Renderer.prototype.tablecell = function(childNode, flags) {
   return {
     object: "block",
     data: { align },
-    type: flags.header ? "table-head" : "table-cell",
+    type: "table-cell",
     nodes: this.groupTextInLeaves(childNode)
   };
 };
@@ -1236,5 +1236,15 @@ const MarkdownParser = {
     return { nodes: fragment };
   }
 };
+
+function splitCells(tableRow) {
+  console.log(tableRow);
+  var cells = tableRow.replace(/([^\\])\|/g, "$1 |").split(/ +\| */), i = 0;
+
+  for (; i < cells.length; i++) {
+    cells[i] = cells[i].replace(/\\\|/g, "|");
+  }
+  return cells;
+}
 
 export default MarkdownParser;

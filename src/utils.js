@@ -12,5 +12,5 @@ export function escapeMarkdownChars(text: string): string {
 
   // Catch all escaping for certain characters
   // TODO: situationally escape these characters so we don't overescape
-  return result.replace(/([`*{}\[\]()+\-!_>])/gi, "\\$1");
+  return result.replace(/([`*{}\[\]()+\-!|_>])/gi, "\\$1");
 }

@@ -299,6 +299,17 @@ a new paragraph
   expect(getNodes(text)).toMatchSnapshot();
 });
 
+test("tables allow escaped pipes within", () => {
+  const text = `
+| Tables   |      Are      |  Cool  |
+|----------|:-------------:|-------:|
+| col has  |   \\|pipes \\|  | inside |
+
+a new paragraph
+`;
+  expect(getNodes(text)).toMatchSnapshot();
+});
+
 test("parses todo list items", () => {
   const text = `
 [ ] todo
