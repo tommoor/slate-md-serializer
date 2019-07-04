@@ -3735,6 +3735,127 @@ Array [
 ]
 `;
 
+exports[`tables with empty cells remain empty 1`] = `
+Array [
+  Object {
+    "data": Object {},
+    "nodes": Array [
+      Object {
+        "data": Object {},
+        "nodes": Array [
+          Object {
+            "data": Object {
+              "align": null,
+            },
+            "nodes": Array [
+              Object {
+                "leaves": Array [
+                  Object {
+                    "marks": Array [],
+                    "object": "leaf",
+                    "text": "",
+                  },
+                ],
+                "object": "text",
+              },
+            ],
+            "object": "block",
+            "type": "table-cell",
+          },
+          Object {
+            "data": Object {
+              "align": "center",
+            },
+            "nodes": Array [
+              Object {
+                "leaves": Array [
+                  Object {
+                    "marks": Array [],
+                    "object": "leaf",
+                    "text": "",
+                  },
+                ],
+                "object": "text",
+              },
+            ],
+            "object": "block",
+            "type": "table-cell",
+          },
+          Object {
+            "data": Object {
+              "align": "right",
+            },
+            "nodes": Array [
+              Object {
+                "leaves": Array [
+                  Object {
+                    "marks": Array [],
+                    "object": "leaf",
+                    "text": "",
+                  },
+                ],
+                "object": "text",
+              },
+            ],
+            "object": "block",
+            "type": "table-cell",
+          },
+        ],
+        "object": "block",
+        "type": "table-row",
+      },
+      Object {
+        "data": Object {},
+        "nodes": Array [
+          Object {
+            "data": Object {
+              "align": null,
+            },
+            "nodes": Array [
+              Object {
+                "leaves": Array [
+                  Object {
+                    "marks": Array [],
+                    "object": "leaf",
+                    "text": "",
+                  },
+                ],
+                "object": "text",
+              },
+            ],
+            "object": "block",
+            "type": "table-cell",
+          },
+          Object {
+            "data": Object {
+              "align": "center",
+            },
+            "nodes": Array [
+              Object {
+                "leaves": Array [
+                  Object {
+                    "marks": Array [],
+                    "object": "leaf",
+                    "text": "",
+                  },
+                ],
+                "object": "text",
+              },
+            ],
+            "object": "block",
+            "type": "table-cell",
+          },
+        ],
+        "object": "block",
+        "type": "table-row",
+      },
+    ],
+    "object": "block",
+    "type": "table",
+  },
+]
+`;
+
 exports[`underlined mark 1`] = `
 Array [
   Object {

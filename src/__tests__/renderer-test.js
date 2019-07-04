@@ -288,6 +288,15 @@ test("parses tables", () => {
   expect(getNodes(text)).toMatchSnapshot();
 });
 
+test("tables with empty cells remain empty", () => {
+  const text = `
+|          |               |       |
+|----------|:-------------:|------:|
+|          |               |       |
+`;
+  expect(getNodes(text)).toMatchSnapshot();
+});
+
 test("tables are not greedy about newlines", () => {
   const text = `
 | Tables   |      Are      |  Cool |
