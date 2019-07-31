@@ -1220,7 +1220,7 @@ const MarkdownParser = {
                   },
                   {
                     object: "leaf",
-                    text: e.message,
+                    text: err.message,
                     marks: []
                   }
                 ]
