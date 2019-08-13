@@ -71,7 +71,7 @@ var block = {
   code: /^( {4}[^\n]+\n*)+/,
   fences: noop,
   hr: /^( *[-*_]){3,} *(?:\n|$)/,
-  heading: /^ *(#{1,6}) *([^\n]+?) *#* *(?:\n|$)/,
+  heading: /^ *(#{1,6}) *([^\n]+?)? *#* *(?:\n|$)/,
   nptable: noop,
   blockquote: /^( *>[^\n]+(\n(?!def)[^\n])*(?:\n|$))+/,
   list: /^( *)(bull) [\s\S]+?(?:hr|def|\n(?! )(?!\1bull )\n|\s*$)/,
@@ -109,7 +109,7 @@ block.normal = assign({}, block);
 block.gfm = assign({}, block.normal, {
   fences: /^ *(`{3,}|~{3,})[ \.]*(\S+)? *\n([\s\S]+?)\s*\1 *(?:\n|$)/,
   paragraph: /^/,
-  heading: /^ *(#{1,6}) +([^\n]+?) *#* *(?:\n{1,2}|$)/
+  heading: /^ *(#{1,6}) +([^\n]+?)? *#* *(?:\n{1,2}|$)/
 });
 
 block.gfm.paragraph = replace(block.paragraph)(

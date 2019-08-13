@@ -72,6 +72,16 @@ test("parses heading6", () => {
   expect(output.document.nodes).toMatchSnapshot();
 });
 
+test("parses heading without text", () => {
+  const output = Markdown.deserialize("## ");
+  expect(output.document.nodes).toMatchSnapshot();
+});
+
+test("does not parse heading within text", () => {
+  const output = Markdown.deserialize("one ## two ");
+  expect(output.document.nodes).toMatchSnapshot();
+});
+
 test("headings are not greedy about newlines", () => {
   const text = `
 a paragraph

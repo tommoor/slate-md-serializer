@@ -303,6 +303,28 @@ function() {
 
 exports[`does not escape characters inside of code marks 1`] = `"\`<script>alert('foo')</script>\`"`;
 
+exports[`does not parse heading within text 1`] = `
+Array [
+  Object {
+    "data": Object {},
+    "nodes": Array [
+      Object {
+        "leaves": Array [
+          Object {
+            "marks": Array [],
+            "object": "leaf",
+            "text": "one ## two ",
+          },
+        ],
+        "object": "text",
+      },
+    ],
+    "object": "block",
+    "type": "paragraph",
+  },
+]
+`;
+
 exports[`does not parse marks around code block boundaries 1`] = `
 Array [
   Object {
@@ -1319,6 +1341,28 @@ Array [
     ],
     "object": "block",
     "type": "paragraph",
+  },
+]
+`;
+
+exports[`parses heading without text 1`] = `
+Array [
+  Object {
+    "data": Object {},
+    "nodes": Array [
+      Object {
+        "leaves": Array [
+          Object {
+            "marks": Array [],
+            "object": "leaf",
+            "text": "",
+          },
+        ],
+        "object": "text",
+      },
+    ],
+    "object": "block",
+    "type": "heading2",
   },
 ]
 `;
