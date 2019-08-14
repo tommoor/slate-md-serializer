@@ -1238,17 +1238,11 @@ const MarkdownParser = {
 };
 
 function splitCells(tableRow) {
-  // Empty rows require a special case – just check if the only characters
-  // we have are pipes and spaces. If so split and return.
-  const emptyRow = tableRow.match(/^[ \|]+$/);
-  if (emptyRow) {
-    return tableRow.split(/\| */);
-  }
+  // We must account for escaped pipes within the cell content
+  let cells = tableRow.split(/[^\\]\| *?|^\|/);
 
-  // Otherwise, we must account for escaped pipes within the cell content
-  let cells = tableRow.replace(/([^\\])\|/g, "$1 |").split(/ +\| */);
   for (let i = 0; i < cells.length; i++) {
-    cells[i] = cells[i].replace(/\\\|/g, "|");
+    cells[i] = cells[i].replace(/\\\|/g, "|").trim();
   }
 
   return cells;

@@ -307,6 +307,15 @@ test("tables with empty cells remain empty", () => {
   expect(getNodes(text)).toMatchSnapshot();
 });
 
+test("tables with leading empty cells remain empty", () => {
+  const text = `
+|          |               | heading |
+|----------|:-------------:|--------:|
+|          |               | content |
+`;
+  expect(getNodes(text)).toMatchSnapshot();
+});
+
 test("tables are not greedy about newlines", () => {
   const text = `
 | Tables   |      Are      |  Cool |
