@@ -851,7 +851,7 @@ Renderer.prototype.tablecell = function(childNode, flags) {
     object: "block",
     data: { align },
     type: "table-cell",
-    nodes: this.groupTextInLeaves(childNode)
+    nodes: [this.paragraph(childNode)]
   };
 };
 
