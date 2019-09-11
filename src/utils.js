@@ -13,9 +13,11 @@ export function escapeMarkdownChars(text: string): string {
   // Blockquotes only happen at beginning of line
   result = result.replace(/^(\s*)>/gi, "$1\\>");
 
-  // Hyphens can happen either in tables or as list items (beginning of line)
-  // TODO: punting on tables for now
+  // Hyphens and plus signs can happen as unordered list items (beginning of line)
   result = result.replace(/^(\s*)-/gi, "$1\\-");
+  result = result.replace(/^(\s*)\+/gi, "$1\\+");
+
+  // TODO: Punting on hyphens in tables for now
 
   // Exclamations only exist in images
   result = result.replace(/!\[(.*)\]\((.*)\)/gi, "\\![$1]($2)");
@@ -25,5 +27,5 @@ export function escapeMarkdownChars(text: string): string {
 
   // Catch all escaping for certain characters
   // TODO: situationally escape these characters so we don't overescape
-  return result.replace(/([`*{}\[\]+_])/gi, "\\$1");
+  return result.replace(/([`*{}\[\]_])/gi, "\\$1");
 }

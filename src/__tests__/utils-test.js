@@ -8,6 +8,7 @@ describe("escapeMarkdownChars", () => {
   test("handles unordered list items", () => {
     expect(escapeMarkdownChars("- text")).toEqual("\\- text");
     expect(escapeMarkdownChars("* text")).toEqual("\\* text");
+    expect(escapeMarkdownChars("+ text")).toEqual("\\+ text");
   });
 
   test("handles bolds", () => {
@@ -53,6 +54,12 @@ describe("escapeMarkdownChars", () => {
   test("does not escape parenthesis", () => {
     expect(escapeMarkdownChars("(safe)")).toEqual(
       "(safe)"
+    );
+  });
+
+  test("does not escape plus signs", () => {
+    expect(escapeMarkdownChars("safe+")).toEqual(
+      "safe+"
     );
   });
 
