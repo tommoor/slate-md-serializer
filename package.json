@@ -4,7 +4,7 @@
   "description": "",
   "main": "lib/renderer.js",
   "scripts": {
-    "prepublish": "yarn build",
+    "prepublish": "npm build",
     "build": "babel src -d lib --ignore test",
     "lint": "eslint src --fix",
     "test": "jest"
