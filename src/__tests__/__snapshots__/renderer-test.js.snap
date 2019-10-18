@@ -1,280 +1,272 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`bold mark 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [
-          Object {
-            "data": Object {},
-            "object": "mark",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "264",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "265",
+        "marks": Immutable.Set [
+          Immutable.Record {
+            "data": Immutable.Map {},
             "type": "bold",
           },
         ],
-        "object": "text",
         "text": "this is bold",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
 ]
 `;
 
 exports[`bold mark inside italic mark 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "300",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "301",
+        "marks": Immutable.Set [],
         "text": "nothing ",
       },
-      Object {
-        "marks": Array [
-          Object {
-            "data": Object {},
-            "object": "mark",
+      Immutable.Record {
+        "key": "302",
+        "marks": Immutable.Set [
+          Immutable.Record {
+            "data": Immutable.Map {},
             "type": "italic",
           },
         ],
-        "object": "text",
         "text": "italic and ",
       },
-      Object {
-        "marks": Array [
-          Object {
-            "data": Object {},
-            "object": "mark",
+      Immutable.Record {
+        "key": "303",
+        "marks": Immutable.Set [
+          Immutable.Record {
+            "data": Immutable.Map {},
             "type": "bold",
           },
-          Object {
-            "data": Object {},
-            "object": "mark",
+          Immutable.Record {
+            "data": Immutable.Map {},
             "type": "italic",
           },
         ],
-        "object": "text",
         "text": "bold",
       },
-      Object {
-        "marks": Array [
-          Object {
-            "data": Object {},
-            "object": "mark",
+      Immutable.Record {
+        "key": "304",
+        "marks": Immutable.Set [
+          Immutable.Record {
+            "data": Immutable.Map {},
             "type": "italic",
           },
         ],
-        "object": "text",
         "text": " and",
       },
-      Object {
-        "marks": Array [],
-        "object": "text",
+      Immutable.Record {
+        "key": "305",
+        "marks": Immutable.Set [],
         "text": " nothing",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
 ]
 `;
 
 exports[`code is not greedy about newlines 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "1312",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "1313",
+        "marks": Immutable.Set [],
         "text": "one sentence",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "1314",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "1315",
+        "marks": Immutable.Set [],
         "text": "",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "1316",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "1317",
+        "marks": Immutable.Set [],
         "text": "const hello = 'world';
 function() {
   return hello;
 }",
       },
     ],
-    "object": "block",
     "type": "code",
   },
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "1318",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "1319",
+        "marks": Immutable.Set [],
         "text": "",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "1320",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "1321",
+        "marks": Immutable.Set [],
         "text": "two sentence",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
 ]
 `;
 
 exports[`code mark 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [
-          Object {
-            "data": Object {},
-            "object": "mark",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "388",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "389",
+        "marks": Immutable.Set [
+          Immutable.Record {
+            "data": Immutable.Map {},
             "type": "code",
           },
         ],
-        "object": "text",
         "text": "const foo = 123;",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
 ]
 `;
 
 exports[`code mark with escaped characters 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [
-          Object {
-            "data": Object {},
-            "object": "mark",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "400",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "401",
+        "marks": Immutable.Set [
+          Immutable.Record {
+            "data": Immutable.Map {},
             "type": "code",
           },
         ],
-        "object": "text",
         "text": "<script>alert('foo')</script>",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
 ]
 `;
 
 exports[`deleted mark 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [
-          Object {
-            "data": Object {},
-            "object": "mark",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "352",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "353",
+        "marks": Immutable.Set [
+          Immutable.Record {
+            "data": Immutable.Map {},
             "type": "deleted",
           },
         ],
-        "object": "text",
         "text": "this is strikethrough",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
 ]
 `;
 
 exports[`does not add extra paragraphs around lists 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "678",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "679",
+        "marks": Immutable.Set [],
         "text": "first paragraph",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "680",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "681",
+        "marks": Immutable.Set [],
         "text": "",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "data": Object {},
-        "nodes": Array [
-          Object {
-            "marks": Array [],
-            "object": "text",
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "682",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "data": Immutable.Map {},
+        "key": "683",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "key": "684",
+            "marks": Immutable.Set [],
             "text": "list",
           },
         ],
-        "object": "block",
         "type": "list-item",
       },
     ],
-    "object": "block",
     "type": "bulleted-list",
   },
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "685",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "686",
+        "marks": Immutable.Set [],
         "text": "second paragraph",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
 ]
@@ -292,2411 +284,2393 @@ function() {
 exports[`does not escape characters inside of code marks 1`] = `"\`<script>alert('foo')</script>\`"`;
 
 exports[`does not parse marks around code block boundaries 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "1280",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "1281",
+        "marks": Immutable.Set [],
         "text": "This is *not",
       },
     ],
-    "object": "block",
     "type": "code",
   },
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "1282",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "1283",
+        "marks": Immutable.Set [],
         "text": "",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "1284",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "1285",
+        "marks": Immutable.Set [],
         "text": "hello * bold",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
 ]
 `;
 
 exports[`does not parse marks inside of code blocks 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "1264",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "1265",
+        "marks": Immutable.Set [],
         "text": "This is *not* bold, how about __this__",
       },
     ],
-    "object": "block",
     "type": "code",
   },
 ]
 `;
 
 exports[`handles escaped blocks 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "1524",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "1525",
+        "marks": Immutable.Set [],
         "text": "# text",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
 ]
 `;
 
 exports[`handles escaped blocks 2`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "1530",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "1531",
+        "marks": Immutable.Set [],
         "text": "- text",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
 ]
 `;
 
 exports[`handles escaped blocks 3`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "1536",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "1537",
+        "marks": Immutable.Set [],
         "text": "* text",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
 ]
 `;
 
 exports[`handles escaped marks 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "1542",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "1543",
+        "marks": Immutable.Set [],
         "text": "this is **not bold**",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
 ]
 `;
 
 exports[`handles escaped marks 2`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "1548",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "1549",
+        "marks": Immutable.Set [],
         "text": "this is *not italic*",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
 ]
 `;
 
 exports[`handles escaped marks 3`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "1554",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "1555",
+        "marks": Immutable.Set [],
         "text": "this is [not](a link)",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
 ]
 `;
 
 exports[`handles escaped marks 4`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "1560",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "1561",
+        "marks": Immutable.Set [],
         "text": "this is ![not](an image)",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
 ]
 `;
 
 exports[`headings are not greedy about newlines 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "172",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "173",
+        "marks": Immutable.Set [],
         "text": "a paragraph",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "174",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "175",
+        "marks": Immutable.Set [],
         "text": "Heading",
       },
     ],
-    "object": "block",
     "type": "heading2",
   },
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "176",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "177",
+        "marks": Immutable.Set [],
         "text": "another paragraph",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
 ]
 `;
 
 exports[`horizontal rule does not make text above a heading 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "226",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "227",
+        "marks": Immutable.Set [],
         "text": "not a heading",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "228",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "229",
+        "marks": Immutable.Set [],
         "text": "",
       },
     ],
-    "object": "block",
     "type": "horizontal-rule",
   },
 ]
 `;
 
 exports[`horizontal rule does not make text above a heading 2`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "246",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "247",
+        "marks": Immutable.Set [],
         "text": "not a heading",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "248",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "249",
+        "marks": Immutable.Set [],
         "text": "===",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
 ]
 `;
 
 exports[`ignores empty link 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "1499",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "1500",
+        "marks": Immutable.Set [],
         "text": "empty",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
 ]
 `;
 
 exports[`inserted mark 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [
-          Object {
-            "data": Object {},
-            "object": "mark",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "364",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "365",
+        "marks": Immutable.Set [
+          Immutable.Record {
+            "data": Immutable.Map {},
             "type": "inserted",
           },
         ],
-        "object": "text",
         "text": "inserted text",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
 ]
 `;
 
 exports[`italic mark 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [
-          Object {
-            "data": Object {},
-            "object": "mark",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "278",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "279",
+        "marks": Immutable.Set [
+          Immutable.Record {
+            "data": Immutable.Map {},
             "type": "italic",
           },
         ],
-        "object": "text",
         "text": "this is italic",
       },
-      Object {
-        "marks": Array [],
-        "object": "text",
+      Immutable.Record {
+        "key": "280",
+        "marks": Immutable.Set [],
         "text": " ",
       },
-      Object {
-        "marks": Array [
-          Object {
-            "data": Object {},
-            "object": "mark",
+      Immutable.Record {
+        "key": "281",
+        "marks": Immutable.Set [
+          Immutable.Record {
+            "data": Immutable.Map {},
             "type": "italic",
           },
         ],
-        "object": "text",
         "text": "this is italic too",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
 ]
 `;
 
 exports[`italic mark inside bold mark 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "328",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "329",
+        "marks": Immutable.Set [],
         "text": "nothing ",
       },
-      Object {
-        "marks": Array [
-          Object {
-            "data": Object {},
-            "object": "mark",
+      Immutable.Record {
+        "key": "330",
+        "marks": Immutable.Set [
+          Immutable.Record {
+            "data": Immutable.Map {},
             "type": "bold",
           },
         ],
-        "object": "text",
         "text": "bold and ",
       },
-      Object {
-        "marks": Array [
-          Object {
-            "data": Object {},
-            "object": "mark",
+      Immutable.Record {
+        "key": "331",
+        "marks": Immutable.Set [
+          Immutable.Record {
+            "data": Immutable.Map {},
             "type": "italic",
           },
-          Object {
-            "data": Object {},
-            "object": "mark",
+          Immutable.Record {
+            "data": Immutable.Map {},
             "type": "bold",
           },
         ],
-        "object": "text",
         "text": "italic",
       },
-      Object {
-        "marks": Array [
-          Object {
-            "data": Object {},
-            "object": "mark",
+      Immutable.Record {
+        "key": "332",
+        "marks": Immutable.Set [
+          Immutable.Record {
+            "data": Immutable.Map {},
             "type": "bold",
           },
         ],
-        "object": "text",
         "text": " and",
       },
-      Object {
-        "marks": Array [],
-        "object": "text",
+      Immutable.Record {
+        "key": "333",
+        "marks": Immutable.Set [],
         "text": " nothing",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
 ]
 `;
 
 exports[`maintains multiple empty paragraphs 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "90",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "91",
+        "marks": Immutable.Set [],
         "text": "This is the first sentence",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "92",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "93",
+        "marks": Immutable.Set [],
         "text": "",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "94",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "95",
+        "marks": Immutable.Set [],
         "text": "",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "96",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "97",
+        "marks": Immutable.Set [],
         "text": "Two empty paragraphs above",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
 ]
 `;
 
 exports[`parses \`\`\` code fences 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "1231",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "1232",
+        "marks": Immutable.Set [],
         "text": "const hello = 'world';
 function() {
   return hello;
 }",
       },
     ],
-    "object": "block",
     "type": "code",
   },
 ]
 `;
 
 exports[`parses \`\`\` code fences with language 1`] = `
-Array [
-  Object {
-    "data": Object {
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {
       "language": "javascript",
     },
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+    "key": "1243",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "1244",
+        "marks": Immutable.Set [],
         "text": "const hello = 'world';
 function() {
   return hello;
 }",
       },
     ],
-    "object": "block",
     "type": "code",
   },
 ]
 `;
 
 exports[`parses ~~~ code fences 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "1348",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "1349",
+        "marks": Immutable.Set [],
         "text": "const hello = 'world';
 function() {
   return hello;
 }",
       },
     ],
-    "object": "block",
     "type": "code",
   },
 ]
 `;
 
 exports[`parses double nested todo list items 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "data": Object {
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "1164",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "data": Immutable.Map {
           "checked": true,
         },
-        "nodes": Array [
-          Object {
-            "marks": Array [],
-            "object": "text",
+        "key": "1165",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "key": "1166",
+            "marks": Immutable.Set [],
             "text": "checked",
           },
-          Object {
-            "data": Object {},
-            "nodes": Array [
-              Object {
-                "data": Object {
+          Immutable.Record {
+            "data": Immutable.Map {},
+            "key": "1167",
+            "nodes": Immutable.List [
+              Immutable.Record {
+                "data": Immutable.Map {
                   "checked": false,
                 },
-                "nodes": Array [
-                  Object {
-                    "marks": Array [],
-                    "object": "text",
+                "key": "1168",
+                "nodes": Immutable.List [
+                  Immutable.Record {
+                    "key": "1169",
+                    "marks": Immutable.Set [],
                     "text": "empty",
                   },
                 ],
-                "object": "block",
                 "type": "list-item",
               },
-              Object {
-                "data": Object {
+              Immutable.Record {
+                "data": Immutable.Map {
                   "checked": true,
                 },
-                "nodes": Array [
-                  Object {
-                    "marks": Array [],
-                    "object": "text",
+                "key": "1170",
+                "nodes": Immutable.List [
+                  Immutable.Record {
+                    "key": "1171",
+                    "marks": Immutable.Set [],
                     "text": "checked",
                   },
                 ],
-                "object": "block",
                 "type": "list-item",
               },
             ],
-            "object": "block",
             "type": "todo-list",
           },
         ],
-        "object": "block",
         "type": "list-item",
       },
     ],
-    "object": "block",
     "type": "todo-list",
   },
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "data": Object {
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "1172",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "data": Immutable.Map {
           "checked": false,
         },
-        "nodes": Array [
-          Object {
-            "marks": Array [],
-            "object": "text",
+        "key": "1173",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "key": "1174",
+            "marks": Immutable.Set [],
             "text": "three",
           },
         ],
-        "object": "block",
         "type": "list-item",
       },
     ],
-    "object": "block",
     "type": "todo-list",
   },
 ]
 `;
 
 exports[`parses empty string 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "1512",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "1513",
+        "marks": Immutable.Set [],
         "text": "",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
 ]
 `;
 
 exports[`parses hashtag 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "1375",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "1376",
+        "marks": Immutable.Set [],
         "text": "this is a ",
       },
-      Object {
-        "data": Object {},
-        "nodes": Array [
-          Object {
-            "marks": Array [],
-            "object": "text",
+      Immutable.Record {
+        "data": Immutable.Map {},
+        "key": "1377",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "key": "1378",
+            "marks": Immutable.Set [],
             "text": "#hashtag",
           },
         ],
-        "object": "inline",
         "type": "hashtag",
       },
-      Object {
-        "marks": Array [],
-        "object": "text",
+      Immutable.Record {
+        "key": "1379",
+        "marks": Immutable.Set [],
         "text": " example",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
 ]
 `;
 
 exports[`parses hashtag ignoring dash 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "1398",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "1399",
+        "marks": Immutable.Set [],
         "text": "dash should end ",
       },
-      Object {
-        "data": Object {},
-        "nodes": Array [
-          Object {
-            "marks": Array [],
-            "object": "text",
+      Immutable.Record {
+        "data": Immutable.Map {},
+        "key": "1400",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "key": "1401",
+            "marks": Immutable.Set [],
             "text": "#hashtag",
           },
         ],
-        "object": "inline",
         "type": "hashtag",
       },
-      Object {
-        "marks": Array [],
-        "object": "text",
+      Immutable.Record {
+        "key": "1402",
+        "marks": Immutable.Set [],
         "text": "-dash",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
 ]
 `;
 
 exports[`parses heading1 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "117",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "118",
+        "marks": Immutable.Set [],
         "text": "Heading",
       },
     ],
-    "object": "block",
     "type": "heading1",
   },
 ]
 `;
 
 exports[`parses heading1 with bold mark 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "150",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "151",
+        "marks": Immutable.Set [],
         "text": "Heading ",
       },
-      Object {
-        "marks": Array [
-          Object {
-            "data": Object {},
-            "object": "mark",
+      Immutable.Record {
+        "key": "152",
+        "marks": Immutable.Set [
+          Immutable.Record {
+            "data": Immutable.Map {},
             "type": "bold",
           },
         ],
-        "object": "text",
         "text": "bold",
       },
-      Object {
-        "marks": Array [],
-        "object": "text",
+      Immutable.Record {
+        "key": "153",
+        "marks": Immutable.Set [],
         "text": " not bold",
       },
     ],
-    "object": "block",
     "type": "heading1",
   },
 ]
 `;
 
 exports[`parses heading1 with italic mark 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "135",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "136",
+        "marks": Immutable.Set [],
         "text": "Heading ",
       },
-      Object {
-        "marks": Array [
-          Object {
-            "data": Object {},
-            "object": "mark",
+      Immutable.Record {
+        "key": "137",
+        "marks": Immutable.Set [
+          Immutable.Record {
+            "data": Immutable.Map {},
             "type": "italic",
           },
         ],
-        "object": "text",
         "text": "italic",
       },
-      Object {
-        "marks": Array [],
-        "object": "text",
+      Immutable.Record {
+        "key": "138",
+        "marks": Immutable.Set [],
         "text": " not italic",
       },
     ],
-    "object": "block",
     "type": "heading1",
   },
 ]
 `;
 
 exports[`parses heading2 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "120",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "121",
+        "marks": Immutable.Set [],
         "text": "Heading",
       },
     ],
-    "object": "block",
     "type": "heading2",
   },
 ]
 `;
 
 exports[`parses heading3 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "123",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "124",
+        "marks": Immutable.Set [],
         "text": "Heading",
       },
     ],
-    "object": "block",
     "type": "heading3",
   },
 ]
 `;
 
 exports[`parses heading4 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "126",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "127",
+        "marks": Immutable.Set [],
         "text": "Heading",
       },
     ],
-    "object": "block",
     "type": "heading4",
   },
 ]
 `;
 
 exports[`parses heading5 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "129",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "130",
+        "marks": Immutable.Set [],
         "text": "Heading",
       },
     ],
-    "object": "block",
     "type": "heading5",
   },
 ]
 `;
 
 exports[`parses heading6 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "132",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "133",
+        "marks": Immutable.Set [],
         "text": "Heading",
       },
     ],
-    "object": "block",
     "type": "heading6",
   },
 ]
 `;
 
 exports[`parses horizontal rule 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "200",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "201",
+        "marks": Immutable.Set [],
         "text": "",
       },
     ],
-    "object": "block",
     "type": "horizontal-rule",
   },
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "202",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "203",
+        "marks": Immutable.Set [],
         "text": "",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "204",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "205",
+        "marks": Immutable.Set [],
         "text": "a paragraph",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
 ]
 `;
 
 exports[`parses image 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "data": Object {
-          "alt": "example",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "1419",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "data": Immutable.Map {
           "src": "http://example.com/logo.png",
+          "alt": "example",
         },
-        "nodes": Array [
-          Object {
-            "marks": Array [],
-            "object": "text",
+        "key": "1420",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "key": "1421",
+            "marks": Immutable.Set [],
             "text": "",
           },
         ],
-        "object": "block",
         "type": "image",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
 ]
 `;
 
 exports[`parses indented code blocks 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "1360",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "1361",
+        "marks": Immutable.Set [],
         "text": "const hello = 'world';
 function() {
   return hello;
 }",
       },
     ],
-    "object": "block",
     "type": "code",
   },
 ]
 `;
 
 exports[`parses indented list items 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "data": Object {},
-        "nodes": Array [
-          Object {
-            "marks": Array [],
-            "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "714",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "data": Immutable.Map {},
+        "key": "715",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "key": "716",
+            "marks": Immutable.Set [],
             "text": "one",
           },
         ],
-        "object": "block",
         "type": "list-item",
       },
-      Object {
-        "data": Object {},
-        "nodes": Array [
-          Object {
-            "marks": Array [],
-            "object": "text",
+      Immutable.Record {
+        "data": Immutable.Map {},
+        "key": "717",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "key": "718",
+            "marks": Immutable.Set [],
             "text": "two",
           },
         ],
-        "object": "block",
         "type": "list-item",
       },
     ],
-    "object": "block",
     "type": "bulleted-list",
   },
 ]
 `;
 
 exports[`parses link 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "data": Object {
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "1435",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "data": Immutable.Map {
           "href": "http://google.com",
         },
-        "nodes": Array [
-          Object {
-            "marks": Array [],
-            "object": "text",
+        "key": "1436",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "key": "1437",
+            "marks": Immutable.Set [],
             "text": "google",
           },
         ],
-        "object": "inline",
         "type": "link",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
 ]
 `;
 
 exports[`parses link with encoded characters 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "data": Object {
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "1467",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "data": Immutable.Map {
           "href": "https://example.com/app/kibana#/discover?_g=(refreshInterval:('$$hashKey':'object:1596',display:'10 seconds',pause:!f,section:1,value:10000),time:(from:now-15m,mode:quick,to:now))&_a=(columns:!(metadata.step,message,metadata.attempt_f,metadata.tries_f,metadata.error_class,metadata.url),index:'logs-',interval:auto,query:(query_string:(analyze_wildcard:!t,query:'metadata.at: Stepper*')),sort:!(time,desc))",
         },
-        "nodes": Array [
-          Object {
-            "marks": Array [],
-            "object": "text",
+        "key": "1468",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "key": "1469",
+            "marks": Immutable.Set [],
             "text": "kibana",
           },
         ],
-        "object": "inline",
         "type": "link",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
 ]
 `;
 
 exports[`parses link with percent symbol 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "data": Object {
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "1483",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "data": Immutable.Map {
           "href": "https://example.com/app/kibana#/visualize/edit/Requests-%25",
         },
-        "nodes": Array [
-          Object {
-            "marks": Array [],
-            "object": "text",
+        "key": "1484",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "key": "1485",
+            "marks": Immutable.Set [],
             "text": "kibana",
           },
         ],
-        "object": "inline",
         "type": "link",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
 ]
 `;
 
 exports[`parses link within mark 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "data": Object {
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "1451",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "data": Immutable.Map {
           "href": "http://google.com",
         },
-        "nodes": Array [
-          Object {
-            "marks": Array [],
-            "object": "text",
+        "key": "1452",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "key": "1453",
+            "marks": Immutable.Set [],
             "text": "google",
           },
         ],
-        "object": "inline",
         "type": "link",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
 ]
 `;
 
 exports[`parses list items 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "data": Object {},
-        "nodes": Array [
-          Object {
-            "marks": Array [],
-            "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "606",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "data": Immutable.Map {},
+        "key": "607",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "key": "608",
+            "marks": Immutable.Set [],
             "text": "one",
           },
         ],
-        "object": "block",
         "type": "list-item",
       },
-      Object {
-        "data": Object {},
-        "nodes": Array [
-          Object {
-            "marks": Array [],
-            "object": "text",
+      Immutable.Record {
+        "data": Immutable.Map {},
+        "key": "609",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "key": "610",
+            "marks": Immutable.Set [],
             "text": "two",
           },
         ],
-        "object": "block",
         "type": "list-item",
       },
     ],
-    "object": "block",
     "type": "bulleted-list",
   },
 ]
 `;
 
 exports[`parses list items with marks 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "data": Object {},
-        "nodes": Array [
-          Object {
-            "marks": Array [],
-            "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "740",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "data": Immutable.Map {},
+        "key": "741",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "key": "742",
+            "marks": Immutable.Set [],
             "text": "one ",
           },
-          Object {
-            "marks": Array [
-              Object {
-                "data": Object {},
-                "object": "mark",
+          Immutable.Record {
+            "key": "743",
+            "marks": Immutable.Set [
+              Immutable.Record {
+                "data": Immutable.Map {},
                 "type": "bold",
               },
             ],
-            "object": "text",
             "text": "bold",
           },
         ],
-        "object": "block",
         "type": "list-item",
       },
-      Object {
-        "data": Object {},
-        "nodes": Array [
-          Object {
-            "marks": Array [
-              Object {
-                "data": Object {},
-                "object": "mark",
+      Immutable.Record {
+        "data": Immutable.Map {},
+        "key": "744",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "key": "745",
+            "marks": Immutable.Set [
+              Immutable.Record {
+                "data": Immutable.Map {},
                 "type": "italic",
               },
             ],
-            "object": "text",
             "text": "italic",
           },
-          Object {
-            "marks": Array [],
-            "object": "text",
+          Immutable.Record {
+            "key": "746",
+            "marks": Immutable.Set [],
             "text": " two",
           },
         ],
-        "object": "block",
         "type": "list-item",
       },
     ],
-    "object": "block",
     "type": "bulleted-list",
   },
 ]
 `;
 
 exports[`parses mixed list items 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "data": Object {},
-        "nodes": Array [
-          Object {
-            "marks": Array [],
-            "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "862",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "data": Immutable.Map {},
+        "key": "863",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "key": "864",
+            "marks": Immutable.Set [],
             "text": "list",
           },
         ],
-        "object": "block",
         "type": "list-item",
       },
     ],
-    "object": "block",
     "type": "ordered-list",
   },
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "data": Object {},
-        "nodes": Array [
-          Object {
-            "marks": Array [],
-            "object": "text",
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "865",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "data": Immutable.Map {},
+        "key": "866",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "key": "867",
+            "marks": Immutable.Set [],
             "text": "another",
           },
         ],
-        "object": "block",
         "type": "list-item",
       },
     ],
-    "object": "block",
     "type": "bulleted-list",
   },
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "data": Object {},
-        "nodes": Array [
-          Object {
-            "marks": Array [],
-            "object": "text",
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "868",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "data": Immutable.Map {},
+        "key": "869",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "key": "870",
+            "marks": Immutable.Set [],
             "text": "different",
           },
         ],
-        "object": "block",
         "type": "list-item",
       },
     ],
-    "object": "block",
     "type": "ordered-list",
   },
 ]
 `;
 
 exports[`parses nested list items 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "data": Object {},
-        "nodes": Array [
-          Object {
-            "marks": Array [],
-            "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "635",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "data": Immutable.Map {},
+        "key": "636",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "key": "637",
+            "marks": Immutable.Set [],
             "text": "one",
           },
         ],
-        "object": "block",
         "type": "list-item",
       },
-      Object {
-        "data": Object {},
-        "nodes": Array [
-          Object {
-            "marks": Array [],
-            "object": "text",
+      Immutable.Record {
+        "data": Immutable.Map {},
+        "key": "638",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "key": "639",
+            "marks": Immutable.Set [],
             "text": "two",
           },
-          Object {
-            "data": Object {},
-            "nodes": Array [
-              Object {
-                "data": Object {},
-                "nodes": Array [
-                  Object {
-                    "marks": Array [],
-                    "object": "text",
+          Immutable.Record {
+            "data": Immutable.Map {},
+            "key": "640",
+            "nodes": Immutable.List [
+              Immutable.Record {
+                "data": Immutable.Map {},
+                "key": "641",
+                "nodes": Immutable.List [
+                  Immutable.Record {
+                    "key": "642",
+                    "marks": Immutable.Set [],
                     "text": "nested",
                   },
                 ],
-                "object": "block",
                 "type": "list-item",
               },
             ],
-            "object": "block",
             "type": "bulleted-list",
           },
         ],
-        "object": "block",
         "type": "list-item",
       },
     ],
-    "object": "block",
     "type": "bulleted-list",
   },
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "643",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "644",
+        "marks": Immutable.Set [],
         "text": "next para",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
 ]
 `;
 
 exports[`parses nested todo list items 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "data": Object {
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "1125",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "data": Immutable.Map {
           "checked": false,
         },
-        "nodes": Array [
-          Object {
-            "marks": Array [],
-            "object": "text",
+        "key": "1126",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "key": "1127",
+            "marks": Immutable.Set [],
             "text": "todo",
           },
-          Object {
-            "data": Object {},
-            "nodes": Array [
-              Object {
-                "data": Object {
+          Immutable.Record {
+            "data": Immutable.Map {},
+            "key": "1128",
+            "nodes": Immutable.List [
+              Immutable.Record {
+                "data": Immutable.Map {
                   "checked": false,
                 },
-                "nodes": Array [
-                  Object {
-                    "marks": Array [],
-                    "object": "text",
+                "key": "1129",
+                "nodes": Immutable.List [
+                  Immutable.Record {
+                    "key": "1130",
+                    "marks": Immutable.Set [],
                     "text": "nested",
                   },
                 ],
-                "object": "block",
                 "type": "list-item",
               },
-              Object {
-                "data": Object {
+              Immutable.Record {
+                "data": Immutable.Map {
                   "checked": false,
                 },
-                "nodes": Array [
-                  Object {
-                    "marks": Array [],
-                    "object": "text",
+                "key": "1131",
+                "nodes": Immutable.List [
+                  Immutable.Record {
+                    "key": "1132",
+                    "marks": Immutable.Set [],
                     "text": "deep",
                   },
                 ],
-                "object": "block",
                 "type": "list-item",
               },
             ],
-            "object": "block",
             "type": "todo-list",
           },
         ],
-        "object": "block",
         "type": "list-item",
       },
     ],
-    "object": "block",
     "type": "todo-list",
   },
 ]
 `;
 
 exports[`parses ordered list items 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "data": Object {},
-        "nodes": Array [
-          Object {
-            "marks": Array [],
-            "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "770",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "data": Immutable.Map {},
+        "key": "771",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "key": "772",
+            "marks": Immutable.Set [],
             "text": "one",
           },
         ],
-        "object": "block",
         "type": "list-item",
       },
-      Object {
-        "data": Object {},
-        "nodes": Array [
-          Object {
-            "marks": Array [],
-            "object": "text",
+      Immutable.Record {
+        "data": Immutable.Map {},
+        "key": "773",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "key": "774",
+            "marks": Immutable.Set [],
             "text": "two",
           },
         ],
-        "object": "block",
         "type": "list-item",
       },
     ],
-    "object": "block",
     "type": "ordered-list",
   },
 ]
 `;
 
 exports[`parses ordered list items with different numbers 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "data": Object {},
-        "nodes": Array [
-          Object {
-            "marks": Array [],
-            "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "828",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "data": Immutable.Map {},
+        "key": "829",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "key": "830",
+            "marks": Immutable.Set [],
             "text": "one",
           },
         ],
-        "object": "block",
         "type": "list-item",
       },
-      Object {
-        "data": Object {},
-        "nodes": Array [
-          Object {
-            "marks": Array [],
-            "object": "text",
+      Immutable.Record {
+        "data": Immutable.Map {},
+        "key": "831",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "key": "832",
+            "marks": Immutable.Set [],
             "text": "two",
           },
         ],
-        "object": "block",
         "type": "list-item",
       },
-      Object {
-        "data": Object {},
-        "nodes": Array [
-          Object {
-            "marks": Array [],
-            "object": "text",
+      Immutable.Record {
+        "data": Immutable.Map {},
+        "key": "833",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "key": "834",
+            "marks": Immutable.Set [],
             "text": "three",
           },
         ],
-        "object": "block",
         "type": "list-item",
       },
     ],
-    "object": "block",
     "type": "ordered-list",
   },
 ]
 `;
 
 exports[`parses ordered list items with marks 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "data": Object {},
-        "nodes": Array [
-          Object {
-            "marks": Array [],
-            "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "796",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "data": Immutable.Map {},
+        "key": "797",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "key": "798",
+            "marks": Immutable.Set [],
             "text": "one ",
           },
-          Object {
-            "marks": Array [
-              Object {
-                "data": Object {},
-                "object": "mark",
+          Immutable.Record {
+            "key": "799",
+            "marks": Immutable.Set [
+              Immutable.Record {
+                "data": Immutable.Map {},
                 "type": "bold",
               },
             ],
-            "object": "text",
             "text": "bold",
           },
         ],
-        "object": "block",
         "type": "list-item",
       },
-      Object {
-        "data": Object {},
-        "nodes": Array [
-          Object {
-            "marks": Array [
-              Object {
-                "data": Object {},
-                "object": "mark",
+      Immutable.Record {
+        "data": Immutable.Map {},
+        "key": "800",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "key": "801",
+            "marks": Immutable.Set [
+              Immutable.Record {
+                "data": Immutable.Map {},
                 "type": "italic",
               },
             ],
-            "object": "text",
             "text": "italic",
           },
-          Object {
-            "marks": Array [],
-            "object": "text",
+          Immutable.Record {
+            "key": "802",
+            "marks": Immutable.Set [],
             "text": " two",
           },
         ],
-        "object": "block",
         "type": "list-item",
       },
     ],
-    "object": "block",
     "type": "ordered-list",
   },
 ]
 `;
 
 exports[`parses paragraph 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "4",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "5",
+        "marks": Immutable.Set [],
         "text": "This is just a sentence",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
 ]
 `;
 
 exports[`parses paragraph with Markdown characters 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "18",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "19",
+        "marks": Immutable.Set [],
         "text": "This ",
       },
-      Object {
-        "marks": Array [
-          Object {
-            "data": Object {},
-            "object": "mark",
+      Immutable.Record {
+        "key": "20",
+        "marks": Immutable.Set [
+          Immutable.Record {
+            "data": Immutable.Map {},
             "type": "bold",
           },
         ],
-        "object": "text",
         "text": "is",
       },
-      Object {
-        "marks": Array [],
-        "object": "text",
+      Immutable.Record {
+        "key": "21",
+        "marks": Immutable.Set [],
         "text": " a sen-ten-ce",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
 ]
 `;
 
 exports[`parses quote 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "data": Object {},
-        "nodes": Array [
-          Object {
-            "marks": Array [],
-            "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "416",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "data": Immutable.Map {},
+        "key": "417",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "key": "418",
+            "marks": Immutable.Set [],
             "text": "this is a quote",
           },
         ],
-        "object": "block",
         "type": "paragraph",
       },
     ],
-    "object": "block",
     "type": "block-quote",
   },
 ]
 `;
 
 exports[`parses quote followed by list with quote (outline/#723) 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "data": Object {},
-        "nodes": Array [
-          Object {
-            "marks": Array [],
-            "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "443",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "data": Immutable.Map {},
+        "key": "444",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "key": "445",
+            "marks": Immutable.Set [],
             "text": "this is a quote",
           },
         ],
-        "object": "block",
         "type": "paragraph",
       },
     ],
-    "object": "block",
     "type": "block-quote",
   },
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "data": Object {},
-        "nodes": Array [
-          Object {
-            "data": Object {},
-            "nodes": Array [
-              Object {
-                "data": Object {},
-                "nodes": Array [
-                  Object {
-                    "marks": Array [],
-                    "object": "text",
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "446",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "data": Immutable.Map {},
+        "key": "447",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "data": Immutable.Map {},
+            "key": "448",
+            "nodes": Immutable.List [
+              Immutable.Record {
+                "data": Immutable.Map {},
+                "key": "449",
+                "nodes": Immutable.List [
+                  Immutable.Record {
+                    "key": "450",
+                    "marks": Immutable.Set [],
                     "text": "this is a list item with a quote",
                   },
                 ],
-                "object": "block",
                 "type": "paragraph",
               },
             ],
-            "object": "block",
             "type": "block-quote",
           },
         ],
-        "object": "block",
         "type": "list-item",
       },
     ],
-    "object": "block",
     "type": "ordered-list",
   },
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "data": Object {},
-        "nodes": Array [
-          Object {
-            "data": Object {},
-            "nodes": Array [
-              Object {
-                "marks": Array [],
-                "object": "text",
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "451",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "data": Immutable.Map {},
+        "key": "452",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "data": Immutable.Map {},
+            "key": "453",
+            "nodes": Immutable.List [
+              Immutable.Record {
+                "key": "454",
+                "marks": Immutable.Set [],
                 "text": "this is a quote with a list item",
               },
             ],
-            "object": "block",
             "type": "list-item",
           },
-          Object {
-            "data": Object {},
-            "nodes": Array [
-              Object {
-                "marks": Array [],
-                "object": "text",
+          Immutable.Record {
+            "data": Immutable.Map {},
+            "key": "455",
+            "nodes": Immutable.List [
+              Immutable.Record {
+                "key": "456",
+                "marks": Immutable.Set [],
                 "text": "this is the second list item",
               },
             ],
-            "object": "block",
             "type": "list-item",
           },
         ],
-        "object": "block",
         "type": "ordered-list",
       },
     ],
-    "object": "block",
     "type": "block-quote",
   },
 ]
 `;
 
 exports[`parses quote with newlines and marks 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "data": Object {},
-        "nodes": Array [
-          Object {
-            "marks": Array [],
-            "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "499",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "data": Immutable.Map {},
+        "key": "500",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "key": "501",
+            "marks": Immutable.Set [],
             "text": "this is a ",
           },
-          Object {
-            "marks": Array [
-              Object {
-                "data": Object {},
-                "object": "mark",
+          Immutable.Record {
+            "key": "502",
+            "marks": Immutable.Set [
+              Immutable.Record {
+                "data": Immutable.Map {},
                 "type": "italic",
               },
             ],
-            "object": "text",
             "text": "quote",
           },
         ],
-        "object": "block",
         "type": "paragraph",
       },
-      Object {
-        "data": Object {},
-        "nodes": Array [
-          Object {
-            "marks": Array [],
-            "object": "text",
+      Immutable.Record {
+        "data": Immutable.Map {},
+        "key": "503",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "key": "504",
+            "marks": Immutable.Set [],
             "text": "this is the second part of the quote",
           },
         ],
-        "object": "block",
         "type": "paragraph",
       },
-      Object {
-        "data": Object {},
-        "nodes": Array [
-          Object {
-            "marks": Array [],
-            "object": "text",
+      Immutable.Record {
+        "data": Immutable.Map {},
+        "key": "505",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "key": "506",
+            "marks": Immutable.Set [],
             "text": "",
           },
         ],
-        "object": "block",
         "type": "paragraph",
       },
-      Object {
-        "data": Object {},
-        "nodes": Array [
-          Object {
-            "marks": Array [],
-            "object": "text",
+      Immutable.Record {
+        "data": Immutable.Map {},
+        "key": "507",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "key": "508",
+            "marks": Immutable.Set [],
             "text": "this is the third part of the quote",
           },
         ],
-        "object": "block",
         "type": "paragraph",
       },
     ],
-    "object": "block",
     "type": "block-quote",
   },
 ]
 `;
 
 exports[`parses tables 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "data": Object {},
-        "nodes": Array [
-          Object {
-            "data": Object {
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "922",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "data": Immutable.Map {},
+        "key": "923",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "data": Immutable.Map {
               "align": null,
             },
-            "nodes": Array [
-              Object {
-                "marks": Array [],
-                "object": "text",
+            "key": "924",
+            "nodes": Immutable.List [
+              Immutable.Record {
+                "key": "925",
+                "marks": Immutable.Set [],
                 "text": "Tables",
               },
             ],
-            "object": "block",
             "type": "table-head",
           },
-          Object {
-            "data": Object {
+          Immutable.Record {
+            "data": Immutable.Map {
               "align": "center",
             },
-            "nodes": Array [
-              Object {
-                "marks": Array [],
-                "object": "text",
+            "key": "926",
+            "nodes": Immutable.List [
+              Immutable.Record {
+                "key": "927",
+                "marks": Immutable.Set [],
                 "text": "Are",
               },
             ],
-            "object": "block",
             "type": "table-head",
           },
-          Object {
-            "data": Object {
+          Immutable.Record {
+            "data": Immutable.Map {
               "align": "right",
             },
-            "nodes": Array [
-              Object {
-                "marks": Array [],
-                "object": "text",
+            "key": "928",
+            "nodes": Immutable.List [
+              Immutable.Record {
+                "key": "929",
+                "marks": Immutable.Set [],
                 "text": "Cool",
               },
             ],
-            "object": "block",
             "type": "table-head",
           },
         ],
-        "object": "block",
         "type": "table-row",
       },
-      Object {
-        "data": Object {},
-        "nodes": Array [
-          Object {
-            "data": Object {
+      Immutable.Record {
+        "data": Immutable.Map {},
+        "key": "930",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "data": Immutable.Map {
               "align": null,
             },
-            "nodes": Array [
-              Object {
-                "marks": Array [],
-                "object": "text",
+            "key": "931",
+            "nodes": Immutable.List [
+              Immutable.Record {
+                "key": "932",
+                "marks": Immutable.Set [],
                 "text": "col 1 is",
               },
             ],
-            "object": "block",
             "type": "table-cell",
           },
-          Object {
-            "data": Object {
+          Immutable.Record {
+            "data": Immutable.Map {
               "align": "center",
             },
-            "nodes": Array [
-              Object {
-                "marks": Array [],
-                "object": "text",
+            "key": "933",
+            "nodes": Immutable.List [
+              Immutable.Record {
+                "key": "934",
+                "marks": Immutable.Set [],
                 "text": "left-aligned",
               },
             ],
-            "object": "block",
             "type": "table-cell",
           },
-          Object {
-            "data": Object {
+          Immutable.Record {
+            "data": Immutable.Map {
               "align": "right",
             },
-            "nodes": Array [
-              Object {
-                "marks": Array [],
-                "object": "text",
+            "key": "935",
+            "nodes": Immutable.List [
+              Immutable.Record {
+                "key": "936",
+                "marks": Immutable.Set [],
                 "text": "$1600",
               },
             ],
-            "object": "block",
             "type": "table-cell",
           },
         ],
-        "object": "block",
         "type": "table-row",
       },
-      Object {
-        "data": Object {},
-        "nodes": Array [
-          Object {
-            "data": Object {
+      Immutable.Record {
+        "data": Immutable.Map {},
+        "key": "937",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "data": Immutable.Map {
               "align": null,
             },
-            "nodes": Array [
-              Object {
-                "marks": Array [],
-                "object": "text",
+            "key": "938",
+            "nodes": Immutable.List [
+              Immutable.Record {
+                "key": "939",
+                "marks": Immutable.Set [],
                 "text": "col 2 is",
               },
             ],
-            "object": "block",
             "type": "table-cell",
           },
-          Object {
-            "data": Object {
+          Immutable.Record {
+            "data": Immutable.Map {
               "align": "center",
             },
-            "nodes": Array [
-              Object {
-                "marks": Array [],
-                "object": "text",
+            "key": "940",
+            "nodes": Immutable.List [
+              Immutable.Record {
+                "key": "941",
+                "marks": Immutable.Set [],
                 "text": "centered",
               },
             ],
-            "object": "block",
             "type": "table-cell",
           },
-          Object {
-            "data": Object {
+          Immutable.Record {
+            "data": Immutable.Map {
               "align": "right",
             },
-            "nodes": Array [
-              Object {
-                "marks": Array [],
-                "object": "text",
+            "key": "942",
+            "nodes": Immutable.List [
+              Immutable.Record {
+                "key": "943",
+                "marks": Immutable.Set [],
                 "text": "$12",
               },
             ],
-            "object": "block",
             "type": "table-cell",
           },
         ],
-        "object": "block",
         "type": "table-row",
       },
-      Object {
-        "data": Object {},
-        "nodes": Array [
-          Object {
-            "data": Object {
+      Immutable.Record {
+        "data": Immutable.Map {},
+        "key": "944",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "data": Immutable.Map {
               "align": null,
             },
-            "nodes": Array [
-              Object {
-                "marks": Array [],
-                "object": "text",
+            "key": "945",
+            "nodes": Immutable.List [
+              Immutable.Record {
+                "key": "946",
+                "marks": Immutable.Set [],
                 "text": "col 3 is",
               },
             ],
-            "object": "block",
             "type": "table-cell",
           },
-          Object {
-            "data": Object {
+          Immutable.Record {
+            "data": Immutable.Map {
               "align": "center",
             },
-            "nodes": Array [
-              Object {
-                "marks": Array [],
-                "object": "text",
+            "key": "947",
+            "nodes": Immutable.List [
+              Immutable.Record {
+                "key": "948",
+                "marks": Immutable.Set [],
                 "text": "right-aligned",
               },
             ],
-            "object": "block",
             "type": "table-cell",
           },
-          Object {
-            "data": Object {
+          Immutable.Record {
+            "data": Immutable.Map {
               "align": "right",
             },
-            "nodes": Array [
-              Object {
-                "marks": Array [],
-                "object": "text",
+            "key": "949",
+            "nodes": Immutable.List [
+              Immutable.Record {
+                "key": "950",
+                "marks": Immutable.Set [],
                 "text": "$1",
               },
             ],
-            "object": "block",
             "type": "table-cell",
           },
         ],
-        "object": "block",
         "type": "table-row",
       },
     ],
-    "object": "block",
     "type": "table",
   },
 ]
 `;
 
 exports[`parses todo list items 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "data": Object {
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "1098",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "data": Immutable.Map {
           "checked": false,
         },
-        "nodes": Array [
-          Object {
-            "marks": Array [],
-            "object": "text",
+        "key": "1099",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "key": "1100",
+            "marks": Immutable.Set [],
             "text": "todo",
           },
         ],
-        "object": "block",
         "type": "list-item",
       },
-      Object {
-        "data": Object {
+      Immutable.Record {
+        "data": Immutable.Map {
           "checked": true,
         },
-        "nodes": Array [
-          Object {
-            "marks": Array [],
-            "object": "text",
+        "key": "1101",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "key": "1102",
+            "marks": Immutable.Set [],
             "text": "done",
           },
         ],
-        "object": "block",
         "type": "list-item",
       },
     ],
-    "object": "block",
     "type": "todo-list",
   },
 ]
 `;
 
 exports[`parses todo list items with marks 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "data": Object {
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "1207",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "data": Immutable.Map {
           "checked": true,
         },
-        "nodes": Array [
-          Object {
-            "marks": Array [
-              Object {
-                "data": Object {},
-                "object": "mark",
+        "key": "1208",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "key": "1209",
+            "marks": Immutable.Set [
+              Immutable.Record {
+                "data": Immutable.Map {},
                 "type": "deleted",
               },
             ],
-            "object": "text",
             "text": "done",
           },
         ],
-        "object": "block",
         "type": "list-item",
       },
-      Object {
-        "data": Object {
+      Immutable.Record {
+        "data": Immutable.Map {
           "checked": true,
         },
-        "nodes": Array [
-          Object {
-            "marks": Array [],
-            "object": "text",
+        "key": "1210",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "key": "1211",
+            "marks": Immutable.Set [],
             "text": "more ",
           },
-          Object {
-            "marks": Array [
-              Object {
-                "data": Object {},
-                "object": "mark",
+          Immutable.Record {
+            "key": "1212",
+            "marks": Immutable.Set [
+              Immutable.Record {
+                "data": Immutable.Map {},
                 "type": "bold",
               },
             ],
-            "object": "text",
             "text": "done",
           },
         ],
-        "object": "block",
         "type": "list-item",
       },
     ],
-    "object": "block",
     "type": "todo-list",
   },
 ]
 `;
 
 exports[`parses two paragraphs 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "38",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "39",
+        "marks": Immutable.Set [],
         "text": "This is the first sentence",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "40",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "41",
+        "marks": Immutable.Set [],
         "text": "This is the second sentence",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
 ]
 `;
 
 exports[`parses two paragraphs 2`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "60",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "61",
+        "marks": Immutable.Set [],
         "text": "This is the first sentence",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "62",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "63",
+        "marks": Immutable.Set [],
         "text": "",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "64",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "65",
+        "marks": Immutable.Set [],
         "text": "This is the second sentence",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
 ]
 `;
 
 exports[`parses whitespace string 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "1518",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "1519",
+        "marks": Immutable.Set [],
         "text": "",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
 ]
 `;
 
 exports[`quote is not greedy about newlines 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "data": Object {},
-        "nodes": Array [
-          Object {
-            "marks": Array [],
-            "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "576",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "data": Immutable.Map {},
+        "key": "577",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "key": "578",
+            "marks": Immutable.Set [],
             "text": "this is a quote",
           },
         ],
-        "object": "block",
         "type": "paragraph",
       },
     ],
-    "object": "block",
     "type": "block-quote",
   },
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "579",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "580",
+        "marks": Immutable.Set [],
         "text": "",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "581",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "582",
+        "marks": Immutable.Set [],
         "text": "this is a paragraph",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
 ]
 `;
 
 exports[`quotes do not get combined 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "data": Object {},
-        "nodes": Array [
-          Object {
-            "marks": Array [],
-            "object": "text",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "541",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "data": Immutable.Map {},
+        "key": "542",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "key": "543",
+            "marks": Immutable.Set [],
             "text": "this is a quote",
           },
         ],
-        "object": "block",
         "type": "paragraph",
       },
     ],
-    "object": "block",
     "type": "block-quote",
   },
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "544",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "545",
+        "marks": Immutable.Set [],
         "text": "",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "data": Object {},
-        "nodes": Array [
-          Object {
-            "marks": Array [],
-            "object": "text",
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "546",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "data": Immutable.Map {},
+        "key": "547",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "key": "548",
+            "marks": Immutable.Set [],
             "text": "this is a different quote",
           },
         ],
-        "object": "block",
         "type": "paragraph",
       },
     ],
-    "object": "block",
     "type": "block-quote",
   },
 ]
 `;
 
 exports[`tables are not greedy about newlines 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "data": Object {},
-        "nodes": Array [
-          Object {
-            "data": Object {
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "1032",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "data": Immutable.Map {},
+        "key": "1033",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "data": Immutable.Map {
               "align": null,
             },
-            "nodes": Array [
-              Object {
-                "marks": Array [],
-                "object": "text",
+            "key": "1034",
+            "nodes": Immutable.List [
+              Immutable.Record {
+                "key": "1035",
+                "marks": Immutable.Set [],
                 "text": "Tables",
               },
             ],
-            "object": "block",
             "type": "table-head",
           },
-          Object {
-            "data": Object {
+          Immutable.Record {
+            "data": Immutable.Map {
               "align": "center",
             },
-            "nodes": Array [
-              Object {
-                "marks": Array [],
-                "object": "text",
+            "key": "1036",
+            "nodes": Immutable.List [
+              Immutable.Record {
+                "key": "1037",
+                "marks": Immutable.Set [],
                 "text": "Are",
               },
             ],
-            "object": "block",
             "type": "table-head",
           },
-          Object {
-            "data": Object {
+          Immutable.Record {
+            "data": Immutable.Map {
               "align": "right",
             },
-            "nodes": Array [
-              Object {
-                "marks": Array [],
-                "object": "text",
+            "key": "1038",
+            "nodes": Immutable.List [
+              Immutable.Record {
+                "key": "1039",
+                "marks": Immutable.Set [],
                 "text": "Cool",
               },
             ],
-            "object": "block",
             "type": "table-head",
           },
         ],
-        "object": "block",
         "type": "table-row",
       },
-      Object {
-        "data": Object {},
-        "nodes": Array [
-          Object {
-            "data": Object {
+      Immutable.Record {
+        "data": Immutable.Map {},
+        "key": "1040",
+        "nodes": Immutable.List [
+          Immutable.Record {
+            "data": Immutable.Map {
               "align": null,
             },
-            "nodes": Array [
-              Object {
-                "marks": Array [],
-                "object": "text",
+            "key": "1041",
+            "nodes": Immutable.List [
+              Immutable.Record {
+                "key": "1042",
+                "marks": Immutable.Set [],
                 "text": "col 1 is",
               },
             ],
-            "object": "block",
             "type": "table-cell",
           },
-          Object {
-            "data": Object {
+          Immutable.Record {
+            "data": Immutable.Map {
               "align": "center",
             },
-            "nodes": Array [
-              Object {
-                "marks": Array [],
-                "object": "text",
+            "key": "1043",
+            "nodes": Immutable.List [
+              Immutable.Record {
+                "key": "1044",
+                "marks": Immutable.Set [],
                 "text": "left-aligned",
               },
             ],
-            "object": "block",
             "type": "table-cell",
           },
-          Object {
-            "data": Object {
+          Immutable.Record {
+            "data": Immutable.Map {
               "align": "right",
             },
-            "nodes": Array [
-              Object {
-                "marks": Array [],
-                "object": "text",
+            "key": "1045",
+            "nodes": Immutable.List [
+              Immutable.Record {
+                "key": "1046",
+                "marks": Immutable.Set [],
                 "text": "$1600",
               },
             ],
-            "object": "block",
             "type": "table-cell",
           },
         ],
-        "object": "block",
         "type": "table-row",
       },
     ],
-    "object": "block",
     "type": "table",
   },
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "1047",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "1048",
+        "marks": Immutable.Set [],
         "text": "",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [],
-        "object": "text",
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "1049",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "1050",
+        "marks": Immutable.Set [],
         "text": "a new paragraph",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
 ]
 `;
 
 exports[`underlined mark 1`] = `
-Array [
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "marks": Array [
-          Object {
-            "data": Object {},
-            "object": "mark",
+Immutable.List [
+  Immutable.Record {
+    "data": Immutable.Map {},
+    "key": "376",
+    "nodes": Immutable.List [
+      Immutable.Record {
+        "key": "377",
+        "marks": Immutable.Set [
+          Immutable.Record {
+            "data": Immutable.Map {},
             "type": "underlined",
           },
         ],
-        "object": "text",
         "text": "underlined text",
       },
     ],
-    "object": "block",
     "type": "paragraph",
   },
 ]
