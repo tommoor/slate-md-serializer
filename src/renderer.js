@@ -34,8 +34,7 @@ const RULES = [
         case 'table':
           tableHeader = ''
 
-          // trim removes trailing newline
-          return children.trim()
+          return `${children.trim()}\n`
         case 'table-head': {
           switch (obj.getIn(['data', 'align'])) {
             case 'left':
@@ -68,21 +67,21 @@ const RULES = [
         case 'table-cell':
           return `| ${children} `
         case 'paragraph':
-          return children
+          return `${children}\n`
         case 'code': {
           const language = obj.getIn(['data', 'language']) || ''
 
-          return `\`\`\`${language}\n${children}\n\`\`\``
+          return `\`\`\`${language}\n${children}\n\`\`\`\n`
         }
 
         case 'code-line':
           return `${children}\n`
         case 'block-quote':
           // Handle multi-line blockquotes
-          return children
+          return `${children
             .split('\n')
             .map(text => `> ${text}`)
-            .join('\n')
+            .join('\n')}\n`
         case 'todo-list':
         case 'bulleted-list':
         case 'ordered-list': {
@@ -92,45 +91,41 @@ const RULES = [
           }
 
           // nested list
-          return `\n${children.replace(/\n+$/gm, '').replace(/^/gm, '   ')}`
+          // TODO: fix the space indention for deeply nested list
+          return children.replace(/^(.+)/gm, '  $1')
         }
 
         case 'list-item': {
           switch (parent.type) {
             case 'ordered-list':
-              return `1. ${children}\n`
-            case 'todo-list': {
-              const checked = obj.getIn(['data', 'checked'])
-              const box = checked ? '[x]' : '[ ]'
-
-              return `${box} ${children}\n`
-            }
-
-            default:
+              return `${parent.nodes.indexOf(obj) + 1}. ${children}`
             case 'bulleted-list':
-              return `* ${children}\n`
+            default:
+              return `* ${children}`
           }
         }
 
         case 'heading1':
           return `# ${children}\n`
         case 'heading2':
-          return `\n## ${children}\n`
+          return `## ${children}\n`
         case 'heading3':
-          return `\n### ${children}\n`
+          return `### ${children}\n`
         case 'heading4':
-          return `\n#### ${children}\n`
+          return `#### ${children}\n`
         case 'heading5':
-          return `\n##### ${children}\n`
+          return `##### ${children}\n`
         case 'heading6':
-          return `\n###### ${children}\n`
+          return `###### ${children}\n`
         case 'horizontal-rule':
-          return `---`
+          return `---\n`
         case 'image': {
           const alt = obj.getIn(['data', 'alt']) || ''
           const src = encode(obj.getIn(['data', 'src']) || '')
+          const title = encode(obj.getIn(['data', 'title']) || '')
+          const titleTag = title ? ` "${title}"` : ''
 
-          return `![${alt}](${src})`
+          return `![${alt}](${src}${titleTag})\n`
         }
       }
     }
@@ -146,7 +141,7 @@ const RULES = [
         const href = encode(obj.getIn(['data', 'href']) || '')
         const text = children.trim() || href
 
-        return href ? `[${text}](${href})` : text
+        return `[${text}](${href})`
       }
     }
   },
@@ -208,10 +203,8 @@ class Markdown {
     const elements = document.nodes.map(node =>
       this.serializeNode(node, document)
     )
-    const output = elements.join('\n')
 
-    // trim beginning whitespace
-    return output.replace(/^\s+/g, '')
+    return elements.join('\n').trim()
   }
 
   /**
