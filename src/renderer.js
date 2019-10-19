@@ -91,17 +91,16 @@ const RULES = [
           }
 
           // nested list
-          // TODO: fix the space indention for deeply nested list
-          return children.replace(/^(.+)/gm, '  $1')
+          return '\n' + children.replace(/^(.+)/gm, '  $1').slice(0, -1)
         }
 
         case 'list-item': {
           switch (parent.type) {
             case 'ordered-list':
-              return `${parent.nodes.indexOf(obj) + 1}. ${children}`
+              return `${parent.nodes.indexOf(obj) + 1}. ${children}\n`
             case 'bulleted-list':
             default:
-              return `* ${children}`
+              return `* ${children}\n`
           }
         }
 
