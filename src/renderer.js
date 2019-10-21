@@ -121,7 +121,7 @@ const RULES = [
         case 'image': {
           const alt = obj.getIn(['data', 'alt']) || ''
           const src = encode(obj.getIn(['data', 'src']) || '')
-          const title = encode(obj.getIn(['data', 'title']) || '')
+          const title = obj.getIn(['data', 'title']) || ''
           const titleTag = title ? ` "${title}"` : ''
 
           return `![${alt}](${src}${titleTag})\n`
