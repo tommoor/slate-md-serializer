@@ -84,24 +84,23 @@ const RULES = [
             .join('\n')}\n`
         case 'todo-list':
         case 'bulleted-list':
-        case 'ordered-list': {
-          // root list
-          if (parent === document) {
-            return children
-          }
-
-          // nested list
-          return '\n' + children.replace(/^(.+)/gm, '  $1').slice(0, -1)
-        }
+        case 'ordered-list':
+          // Remove excessive newlines.
+          return children.replace(/\n+$/, '\n')
 
         case 'list-item': {
-          switch (parent.type) {
-            case 'ordered-list':
-              return `${parent.nodes.indexOf(obj) + 1}. ${children}\n`
-            case 'bulleted-list':
-            default:
-              return `* ${children}\n`
+          if (parent.type === 'ordered-list') {
+            // There should be enough left pad to align all lines with first one,
+            // otherwise some parsers parse the markdown incorrectly.
+            const index = (parent.nodes.indexOf(obj) + 1).toString()
+            const pad = ' '.repeat(index.length + 2)
+
+            return children
+              .replace(/^(.+)/gm, `${pad}$1`)
+              .replace(/^\s+/, `${index}. `)
           }
+
+          return children.replace(/^(.+)/gm, '  $1').replace(/^ /, '-')
         }
 
         case 'heading1':
@@ -231,6 +230,14 @@ class Markdown {
       )
     }
 
+    const isMultilineListItem =
+      node.type === 'list-item' &&
+      (node.nodes.size !== 2 ||
+        node.nodes.first().type !== 'paragraph' ||
+        !['ordered-list', 'bulleted-list', 'todo-list'].includes(
+          node.nodes.last().type
+        ))
+
     const children = node.nodes
       .map((childNode, index) => {
         const serialized = this.serializeNode(
@@ -247,8 +254,8 @@ class Markdown {
         )
       })
       .join(
-        // Special case for blockquotes, children in blockquotes are separated by new lines
-        node.type === 'block-quote' ? '\n' : ''
+        // Special case for blockquotes && multi-line list items
+        node.type === 'block-quote' || isMultilineListItem ? '\n' : ''
       )
 
     for (const rule of this.rules) {
