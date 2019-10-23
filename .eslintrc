@@ -1,9 +1,7 @@
 {
-  "parser": "babel-eslint",
-  "plugins": [
-    "prettier",
-  ],
-  "rules": {
-    "prettier/prettier": "error"
-  }
+  "extends": "@dadi",
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "rules": {"no-useless-escape": "off"}
 }
