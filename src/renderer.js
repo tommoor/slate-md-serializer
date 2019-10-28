@@ -144,6 +144,8 @@ const RULES = [
           return `_${children}_`;
         case "code":
           return `\`${children}\``;
+        case "math":
+          return `$$${children}$$`;
         case "inserted":
           return `++${children}++`;
         case "deleted":
@@ -213,9 +215,10 @@ class Markdown {
       );
 
       return leaves.map(leave => {
-        const inCodeMark = !!leave.marks.filter(mark => mark.type === "code")
-          .size;
-        return this.serializeLeaves(leave, !inCodeBlock && !inCodeMark);
+        const inUnescapedMark = !!leave.marks.filter(
+          mark => mark.type === "code"
+        ).size;
+        return this.serializeLeaves(leave, !inCodeBlock && !inUnescapedMark);
       });
     }
 

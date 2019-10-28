@@ -1018,6 +1018,34 @@ Array [
 ]
 `;
 
+exports[`math mark 1`] = `
+Array [
+  Object {
+    "data": Object {},
+    "nodes": Array [
+      Object {
+        "leaves": Array [
+          Object {
+            "marks": Array [
+              Object {
+                "data": Object {},
+                "object": "mark",
+                "type": "math",
+              },
+            ],
+            "object": "leaf",
+            "text": "int\\\\_0^infty rac\\\\{1\\\\}\\\\{x\\\\}",
+          },
+        ],
+        "object": "text",
+      },
+    ],
+    "object": "block",
+    "type": "paragraph",
+  },
+]
+`;
+
 exports[`parses \`\`\` code fences 1`] = `
 Array [
   Object {

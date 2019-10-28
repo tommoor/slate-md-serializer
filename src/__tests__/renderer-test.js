@@ -148,6 +148,11 @@ test("code mark", () => {
   expect(getNodes(text)).toMatchSnapshot();
 });
 
+test("math mark", () => {
+  const text = "$$\int_0^\infty \frac{1}{x}$$";
+  expect(getNodes(text)).toMatchSnapshot();
+});
+
 test("code mark with escaped characters", () => {
   const text = "`<script>alert('foo')</script>`";
   expect(getNodes(text)).toMatchSnapshot();

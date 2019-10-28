@@ -486,6 +486,7 @@ var inline = {
   underlined: /^__([\s\S]+?)__(?!_)/,
   em: /^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,
   code: /^(`+)\s*([\s\S]*?[^`])\s*\1(?!`)/,
+  math: /^(\${2,})\s*([\s\S]*?[^$])\s*\1(?!\$)/,
   br: /^ {2,}\n(?!\s*$)/,
   del: noop,
   ins: noop,
@@ -666,6 +667,13 @@ InlineLexer.prototype.parse = function(src) {
     if ((cap = this.rules.code.exec(src))) {
       src = src.substring(cap[0].length);
       out.push(this.renderer.codespan(cap[2]));
+      continue;
+    }
+
+    // math
+    if ((cap = this.rules.math.exec(src))) {
+      src = src.substring(cap[0].length);
+      out.push(this.renderer.math(cap[2]));
       continue;
     }
 
@@ -893,6 +901,13 @@ Renderer.prototype.codespan = function(text) {
   return {
     text,
     marks: [{ type: "code" }]
+  };
+};
+
+Renderer.prototype.math = function(text) {
+  return {
+    text,
+    marks: [{ type: "math" }]
   };
 };
 
