@@ -612,7 +612,7 @@ InlineLexer.prototype.parse = function(src) {
     // hashtag
     if ((cap = this.rules.hashtag.exec(src))) {
       src = src.substring(cap[0].length);
-      out.push(this.renderer.hashtag(cap[1]));
+      out.push(this.renderer.hashtag(this.parse(`\\${cap[1]}`)));
       continue;
     }
 
@@ -855,38 +855,32 @@ Renderer.prototype.tablecell = function(childNode, flags) {
   };
 };
 
-// span level renderer
-Renderer.prototype.underlined = function(childNode) {
+function applyMark(childNode, type) {
   return childNode.map(node => {
-    if (node.marks) {
-      node.marks.push({ type: "underlined" });
+    if (node.object === "inline") {
+      node.nodes = applyMark(node.nodes, type);
+    } else if (node.object === "text") {
+      node.leaves = applyMark(node.leaves, type);
+    } else if (node.marks) {
+      node.marks.push({ type });
     } else {
-      node.marks = [{ type: "underlined" }];
+      node.marks = [{ type }];
     }
     return node;
   });
+}
+
+// span level renderer
+Renderer.prototype.underlined = function(childNode) {
+  return applyMark(childNode, "underlined");
 };
 
 Renderer.prototype.strong = function(childNode) {
-  return childNode.map(node => {
-    if (node.marks) {
-      node.marks.push({ type: "bold" });
-    } else {
-      node.marks = [{ type: "bold" }];
-    }
-    return node;
-  });
+  return applyMark(childNode, "bold");
 };
 
 Renderer.prototype.em = function(childNode) {
-  return childNode.map(node => {
-    if (node.marks) {
-      node.marks.push({ type: "italic" });
-    } else {
-      node.marks = [{ type: "italic" }];
-    }
-    return node;
-  });
+  return applyMark(childNode, "italic");
 };
 
 Renderer.prototype.codespan = function(text) {
@@ -903,37 +897,18 @@ Renderer.prototype.br = function() {
 };
 
 Renderer.prototype.del = function(childNode) {
-  return childNode.map(node => {
-    if (node.marks) {
-      node.marks.push({ type: "deleted" });
-    } else {
-      node.marks = [{ type: "deleted" }];
-    }
-    return node;
-  });
+  return applyMark(childNode, "deleted");
 };
 
 Renderer.prototype.ins = function(childNode) {
-  return childNode.map(node => {
-    if (node.marks) {
-      node.marks.push({ type: "inserted" });
-    } else {
-      node.marks = [{ type: "inserted" }];
-    }
-    return node;
-  });
+  return applyMark(childNode, "inserted");
 };
 
 Renderer.prototype.hashtag = function(childNode) {
   return {
     object: "inline",
     type: "hashtag",
-    nodes: [
-      {
-        object: "text",
-        leaves: [{ text: childNode }]
-      }
-    ]
+    nodes: this.groupTextInLeaves(childNode)
   };
 };
 

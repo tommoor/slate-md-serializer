@@ -717,6 +717,51 @@ Array [
 ]
 `;
 
+exports[`hashtag with mark 1`] = `
+Array [
+  Object {
+    "data": Object {},
+    "nodes": Array [
+      Object {
+        "leaves": Array [
+          Object {
+            "marks": Array [],
+            "object": "leaf",
+            "text": "this is a ",
+          },
+        ],
+        "object": "text",
+      },
+      Object {
+        "data": Object {},
+        "nodes": Array [
+          Object {
+            "leaves": Array [
+              Object {
+                "marks": Array [
+                  Object {
+                    "data": Object {},
+                    "object": "mark",
+                    "type": "bold",
+                  },
+                ],
+                "object": "leaf",
+                "text": "#hashtag",
+              },
+            ],
+            "object": "text",
+          },
+        ],
+        "object": "inline",
+        "type": "hashtag",
+      },
+    ],
+    "object": "block",
+    "type": "paragraph",
+  },
+]
+`;
+
 exports[`headings are not greedy about newlines 1`] = `
 Array [
   Object {
@@ -1778,7 +1823,13 @@ Array [
           Object {
             "leaves": Array [
               Object {
-                "marks": Array [],
+                "marks": Array [
+                  Object {
+                    "data": Object {},
+                    "object": "mark",
+                    "type": "bold",
+                  },
+                ],
                 "object": "leaf",
                 "text": "google",
               },

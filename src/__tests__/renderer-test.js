@@ -480,6 +480,11 @@ test("parses hashtag ignoring dash", () => {
   expect(getNodes(text)).toMatchSnapshot();
 });
 
+test("hashtag with mark", () => {
+  const text = `this is a **#hashtag**`;
+  expect(getNodes(text)).toMatchSnapshot();
+});
+
 test("parses image", () => {
   const text = `![example](http://example.com/logo.png)`;
   expect(getNodes(text)).toMatchSnapshot();
