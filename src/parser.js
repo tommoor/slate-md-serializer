@@ -787,7 +787,10 @@ Renderer.prototype.code = function(childNode, language) {
     object: 'block',
     type: 'code',
     data,
-    nodes: this.groupTextInLeaves(childNode)
+    nodes: this.groupTextInLeaves(childNode).map(node => ({
+      ...node,
+      text: node.text.replace(/\\`/g, '`')
+    }))
   }
 }
 

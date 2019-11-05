@@ -71,11 +71,14 @@ const RULES = [
         case 'code': {
           const language = obj.getIn(['data', 'language']) || ''
 
-          return `\`\`\`${language}\n${children}\n\`\`\`\n`
+          return `\`\`\`${language}\n${children.replace(
+            /```/g,
+            '\\`\\`\\`'
+          )}\n\`\`\`\n`
         }
 
         case 'code-line':
-          return `${children}\n`
+          return `${children.replace(/```/g, '\\`\\`\\`')}\n`
         case 'block-quote':
           // Handle multi-line blockquotes
           return `${children
