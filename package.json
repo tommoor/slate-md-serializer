@@ -1,10 +1,10 @@
 {
   "name": "@edithq/slate-md-serializer",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "",
   "main": "lib/renderer.js",
   "scripts": {
-    "prepublish": "npm build",
+    "prepublish": "npm run build",
     "build": "babel src -d lib --ignore test",
     "lint": "eslint src --fix",
     "test": "eslint --ext js,jsx . && prettier --check '**/*.{js,jsx,json,md,html,css}' && jest"
