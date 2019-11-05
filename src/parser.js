@@ -202,7 +202,11 @@ Lexer.prototype.token = function(src, top, bq) {
       src = src.substring(cap[0].length);
       const newlines = cap[0].length;
 
-      if (top) {
+      // special case: a newline prepending a table block should not be
+      // interpreted as an empty paragraph.
+      const aboutToParseTable = this.rules.nptable.exec(src) || this.rules.table.exec(src);
+
+      if (top && !aboutToParseTable) {
         for (let i = 0; i < newlines; i++) {
           this.tokens.push({
             type: "paragraph",
