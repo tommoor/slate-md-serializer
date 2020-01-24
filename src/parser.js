@@ -284,6 +284,11 @@ Lexer.prototype.token = function(src, top, bq) {
 
       this.tokens.push(item);
 
+      // New line character directly after table is part of the syntax and should be ignored
+      if ((cap = /^\n/.exec(src))) {
+        src = src.substring(cap[0].length);
+      }
+
       continue;
     }
 
@@ -436,6 +441,11 @@ Lexer.prototype.token = function(src, top, bq) {
       }
 
       this.tokens.push(item);
+
+      // New line character directly after table is part of the syntax and should be ignored
+      if ((cap = /^\n/.exec(src))) {
+        src = src.substring(cap[0].length);
+      }
 
       continue;
     }

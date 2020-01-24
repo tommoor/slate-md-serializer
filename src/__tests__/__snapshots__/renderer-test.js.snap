@@ -3743,23 +3743,6 @@ Array [
           Object {
             "marks": Array [],
             "object": "leaf",
-            "text": "",
-          },
-        ],
-        "object": "text",
-      },
-    ],
-    "object": "block",
-    "type": "paragraph",
-  },
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "leaves": Array [
-          Object {
-            "marks": Array [],
-            "object": "leaf",
             "text": "a new paragraph",
           },
         ],
@@ -3960,23 +3943,6 @@ Array [
     ],
     "object": "block",
     "type": "table",
-  },
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "leaves": Array [
-          Object {
-            "marks": Array [],
-            "object": "leaf",
-            "text": "",
-          },
-        ],
-        "object": "text",
-      },
-    ],
-    "object": "block",
-    "type": "paragraph",
   },
   Object {
     "data": Object {},
