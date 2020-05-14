@@ -17,6 +17,9 @@ const String = new Record({
 
 let tableHeader = "";
 let firstRow = true;
+let version;
+let previousBlock;
+let currentBlock;
 
 const RULES = [
   {
@@ -30,6 +33,15 @@ const RULES = [
     serialize(obj, children, document) {
       if (obj.object !== "block") return;
       let parent = document.getParent(obj.key);
+
+      if (currentBlock) {
+        previousBlock = currentBlock;
+      }
+
+      currentBlock = {
+        obj,
+        children
+      };
 
       switch (obj.type) {
         case "table":
@@ -62,8 +74,25 @@ const RULES = [
             firstRow = false;
           }
           return `${children}|\n${output}`;
-        case "paragraph":
+        case "paragraph": {
+          // version 2 outputs markdown compatible with rich-markdown-editor
+          // v10+ – it can be used to migrate documents between v9 -> v10
+          if (version === 2) {
+            if (children === "") {
+              if (
+                previousBlock &&
+                previousBlock.children === "" &&
+                previousBlock.obj.type === "paragraph"
+              ) {
+                return `\\`;
+              }
+              return `\n\\`;
+            }
+            return children;
+          }
+
           return children;
+        }
         case "code": {
           const language = obj.getIn(["data", "language"]) || "";
           return `\`\`\`${language}\n${children}\n\`\`\``;
@@ -91,7 +120,11 @@ const RULES = [
             case "todo-list":
               let checked = obj.getIn(["data", "checked"]);
               let box = checked ? "[x]" : "[ ]";
-              return `${box} ${children}\n`;
+
+              // version 2 outputs markdown compatible with rich-markdown-editor
+              // v10+ – it can be used to migrate documents between v9 -> v10
+              let prepend = version === 2 ? "- " : "";
+              return `${prepend}${box} ${children}\n`;
             default:
             case "bulleted-list":
               return `* ${children}\n`;
@@ -182,10 +215,16 @@ class Markdown {
    * Serialize a `state` object into an HTML string.
    *
    * @param {State} state
+   * @param {Object} options
    * @return {String} markdown
    */
 
-  serialize(state) {
+  serialize(state, options = {}) {
+    // reset state in module context
+    version = options.version || 1;
+    currentBlock = undefined;
+    previousBlock = undefined;
+
     const { document } = state;
     const elements = document.nodes.map(node =>
       this.serializeNode(node, document)

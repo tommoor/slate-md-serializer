@@ -535,3 +535,88 @@ test("handles escaped marks", () => {
   expect(getNodes("this is \\[not\\]\\(a link\\)")).toMatchSnapshot();
   expect(getNodes("this is \\!\\[not\\]\\(an image\\)")).toMatchSnapshot();
 });
+
+// document version 2
+
+function getVersion2(text) {
+  const parsed = Markdown.deserialize(text);
+  return Markdown.serialize(parsed, { version: 2 });
+}
+
+test("parses todo list items", () => {
+  const text = `
+[ ] todo
+[x] done
+`;
+  expect(getVersion2(text)).toMatchSnapshot();
+});
+
+test("parses nested todo list items", () => {
+  const text = `
+[ ] todo
+   [ ] nested
+   [ ] deep
+`;
+  expect(getVersion2(text)).toMatchSnapshot();
+});
+
+test("parses double nested todo list items", () => {
+  const text = `
+[x] checked
+   [ ] empty
+   [x] checked
+
+[ ] three
+`;
+  expect(getVersion2(text)).toMatchSnapshot();
+});
+
+test("parses todo list items with marks", () => {
+  const text = `
+ [x] ~~done~~
+ [x] more **done**
+`;
+  expect(getVersion2(text)).toMatchSnapshot();
+});
+
+test("headings are not greedy about newlines", () => {
+  const text = `
+a paragraph
+
+## Heading
+
+another paragraph
+`;
+  expect(getVersion2(text)).toMatchSnapshot();
+});
+
+test("maintains multiple empty paragraphs", () => {
+  const text = `
+a paragraph
+
+
+another paragraph
+`;
+  expect(getVersion2(text)).toMatchSnapshot();
+});
+
+test("maintains lots of empty paragraphs", () => {
+  const text = `
+a paragraph
+
+
+
+another paragraph
+`;
+  expect(getVersion2(text)).toMatchSnapshot();
+});
+
+test("maintains heading plus empty paragraphs", () => {
+  const text = `
+# Heading
+
+
+another paragraph
+`;
+  expect(getVersion2(text)).toMatchSnapshot();
+});

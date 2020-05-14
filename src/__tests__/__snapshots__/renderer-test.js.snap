@@ -818,6 +818,14 @@ Array [
 ]
 `;
 
+exports[`headings are not greedy about newlines 2`] = `
+"a paragraph
+
+## Heading
+
+another paragraph"
+`;
+
 exports[`horizontal rule does not make text above a heading 1`] = `
 Array [
   Object {
@@ -990,6 +998,23 @@ Array [
 ]
 `;
 
+exports[`maintains heading plus empty paragraphs 1`] = `
+"# Heading
+
+
+\\\\
+another paragraph"
+`;
+
+exports[`maintains lots of empty paragraphs 1`] = `
+"a paragraph
+
+\\\\
+\\\\
+\\\\
+another paragraph"
+`;
+
 exports[`maintains multiple empty paragraphs 1`] = `
 Array [
   Object {
@@ -1061,6 +1086,14 @@ Array [
     "type": "paragraph",
   },
 ]
+`;
+
+exports[`maintains multiple empty paragraphs 2`] = `
+"a paragraph
+
+\\\\
+\\\\
+another paragraph"
 `;
 
 exports[`parses \`\`\` code fences 1`] = `
@@ -1268,6 +1301,15 @@ Array [
     "type": "todo-list",
   },
 ]
+`;
+
+exports[`parses double nested todo list items 2`] = `
+"- [x] checked
+   - [ ] empty
+   - [x] checked
+
+- [ ] three
+"
 `;
 
 exports[`parses empty string 1`] = `
@@ -2292,6 +2334,13 @@ Array [
 ]
 `;
 
+exports[`parses nested todo list items 2`] = `
+"- [ ] todo
+   - [ ] nested
+   - [ ] deep
+"
+`;
+
 exports[`parses ordered list items 1`] = `
 Array [
   Object {
@@ -3225,6 +3274,12 @@ Array [
 ]
 `;
 
+exports[`parses todo list items 2`] = `
+"- [ ] todo
+- [x] done
+"
+`;
+
 exports[`parses todo list items with marks 1`] = `
 Array [
   Object {
@@ -3304,6 +3359,12 @@ Array [
     "type": "todo-list",
   },
 ]
+`;
+
+exports[`parses todo list items with marks 2`] = `
+"- [x] ~~done~~
+- [x] more **done**
+"
 `;
 
 exports[`parses two paragraphs 1`] = `
