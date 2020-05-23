@@ -80,6 +80,12 @@ const RULES = [
           if (version === 2) {
             if (children === "") {
               if (
+                !previousBlock ||
+                previousBlock.obj.type.startsWith("table")
+              ) {
+                return "";
+              }
+              if (
                 previousBlock &&
                 previousBlock.children === "" &&
                 previousBlock.obj.type === "paragraph"

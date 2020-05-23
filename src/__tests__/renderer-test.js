@@ -543,6 +543,15 @@ function getVersion2(text) {
   return Markdown.serialize(parsed, { version: 2 });
 }
 
+test("tables with empty cells remain as tables", () => {
+  const text = `
+|          |               |       |
+|----------|:-------------:|------:|
+|          |               |       |
+`;
+  expect(getVersion2(text)).toMatchSnapshot();
+});
+
 test("parses todo list items", () => {
   const text = `
 [ ] todo

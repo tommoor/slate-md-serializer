@@ -4059,6 +4059,12 @@ Array [
 ]
 `;
 
+exports[`tables with empty cells remain as tables 1`] = `
+"|  |  |  |
+| --- |:---:| ---:|
+|  |  |"
+`;
+
 exports[`tables with empty cells remain empty 1`] = `
 Array [
   Object {
