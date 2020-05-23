@@ -566,6 +566,13 @@ this is a sentance _ this is italic_
   expect(getVersion2(text)).toMatchSnapshot();
 });
 
+test("complicated mark regression", () => {
+  const text = `
+  **Bold re\\-lolo test re\\-check bold**
+`;
+  expect(getVersion2(text)).toMatchSnapshot();
+});
+
 test("parses todo list items", () => {
   const text = `
 [ ] todo

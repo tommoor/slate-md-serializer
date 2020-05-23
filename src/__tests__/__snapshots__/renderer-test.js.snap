@@ -177,6 +177,8 @@ Array [
 ]
 `;
 
+exports[`complicated mark regression 1`] = `"**Bold re\\\\-lolo test re\\\\-check bold**"`;
+
 exports[`deleted mark 1`] = `
 Array [
   Object {

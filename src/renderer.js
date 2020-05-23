@@ -264,10 +264,26 @@ class Markdown {
       this.serializeNode(node, document)
     );
 
-    const output = elements.join("\n");
+    let output = elements.join("\n");
 
     // trim beginning whitespace
-    return output.replace(/^\s+/g, "");
+    output = output.replace(/^\s+/g, "");
+
+    // fix marks adjacent to marks. This is a quirk in the old editor where a
+    // mark crossing \ character boundaries would be stopped and started
+    // again. The v2 editor respects Markdown standard and does not interpret
+    // these as a mark followed by another mark, and so they must be stripped.
+    if (version === 2) {
+      return output
+        .replace(/\*\*\*\*\\/g, "\\")
+        .replace(/\+\+\+\+\\/g, "\\")
+        .replace(/~~~~\\/g, "\\")
+        .replace(/____\\/g, "\\")
+        .replace(/``\\/g, "\\")
+        .replace(/__\\/g, "\\");
+    }
+
+    return output;
   }
 
   /**
