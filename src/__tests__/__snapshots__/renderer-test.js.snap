@@ -3617,6 +3617,10 @@ Array [
 ]
 `;
 
+exports[`removes spaces from beginning of marks 1`] = `"this is a sentance  _this is italic_"`;
+
+exports[`removes trailing spaces from end of marks 1`] = `"_this is italic_  in a sentance"`;
+
 exports[`tables allow escaped pipes within 1`] = `
 Array [
   Object {

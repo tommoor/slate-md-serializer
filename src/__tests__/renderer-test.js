@@ -552,6 +552,20 @@ test("tables with empty cells remain as tables", () => {
   expect(getVersion2(text)).toMatchSnapshot();
 });
 
+test("removes trailing spaces from end of marks", () => {
+  const text = `
+_this is italic _ in a sentance
+`;
+  expect(getVersion2(text)).toMatchSnapshot();
+});
+
+test("removes spaces from beginning of marks", () => {
+  const text = `
+this is a sentance _ this is italic_
+`;
+  expect(getVersion2(text)).toMatchSnapshot();
+});
+
 test("parses todo list items", () => {
   const text = `
 [ ] todo

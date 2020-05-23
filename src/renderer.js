@@ -176,6 +176,34 @@ const RULES = [
       if (obj.object !== "mark") return;
       if (!children) return;
 
+      // version 2 outputs markdown compatible with rich-markdown-editor
+      // v10+ – it can be used to migrate documents between v9 -> v10
+      // trailing spaces must be stripped from marks
+      if (version === 2) {
+        const match = children.match(/\s+$/);
+        const spacesBefore = children.search(/\S|$/);
+        const spacesAfter = match ? match[0].length : 0;
+        const sB = Array(spacesBefore + 1).join(" ");
+        const sA = Array(spacesAfter + 1).join(" ");
+        const content = children.trim();
+
+        switch (obj.type) {
+          case "bold":
+            return `${sB}**${content}**${sA}`;
+          case "italic":
+            return `${sB}_${content}_${sA}`;
+          case "code":
+            return `${sB}\`${content}\`${sA}`;
+          case "inserted":
+            return `${sB}++${content}++${sA}`;
+          case "deleted":
+            return `${sB}~~${content}~~${sA}`;
+          case "underlined":
+            return `${sB}__${content}__${sA}`;
+        }
+        return;
+      }
+
       switch (obj.type) {
         case "bold":
           return `**${children}**`;
