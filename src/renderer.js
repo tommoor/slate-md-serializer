@@ -275,10 +275,10 @@ class Markdown {
     // these as a mark followed by another mark, and so they must be stripped.
     if (version === 2) {
       return output
-        .replace(/\*\*\*\*\\/g, "\\")
-        .replace(/\+\+\+\+\\/g, "\\")
-        .replace(/~~~~\\/g, "\\")
-        .replace(/____\\/g, "\\")
+        .replace(/\*\*\*\*/g, "")
+        .replace(/\+\+\+\+/g, "")
+        .replace(/~~~~/g, "")
+        .replace(/____/g, "")
         .replace(/``\\/g, "\\")
         .replace(/__\\/g, "\\");
     }
