@@ -202,7 +202,11 @@ Lexer.prototype.token = function(src, top, bq) {
       src = src.substring(cap[0].length);
       const newlines = cap[0].length;
 
-      if (top) {
+      // special case: a newline prepending a table block should not be
+      // interpreted as an empty paragraph.
+      const aboutToParseTable = this.rules.nptable.exec(src) || this.rules.table.exec(src);
+
+      if (top && !aboutToParseTable) {
         for (let i = 0; i < newlines; i++) {
           this.tokens.push({
             type: "paragraph",
@@ -279,6 +283,11 @@ Lexer.prototype.token = function(src, top, bq) {
       }
 
       this.tokens.push(item);
+
+      // New line character directly after table is part of the syntax and should be ignored
+      if ((cap = /^\n/.exec(src))) {
+        src = src.substring(cap[0].length);
+      }
 
       continue;
     }
@@ -410,7 +419,7 @@ Lexer.prototype.token = function(src, top, bq) {
         type: "table",
         header: splitCells(cap[1].replace(/^ *| *\| *$/g, "")),
         align: cap[2].replace(/^ *|\| *$/g, "").split(/ *\| */),
-        cells: cap[3].replace(/(?: *\| *)?\n$/, "").split("\n")
+        cells: cap[3].replace(/\n$/, "").split("\n")
       };
 
       for (i = 0; i < item.align.length; i++) {
@@ -432,6 +441,11 @@ Lexer.prototype.token = function(src, top, bq) {
       }
 
       this.tokens.push(item);
+
+      // New line character directly after table is part of the syntax and should be ignored
+      if ((cap = /^\n/.exec(src))) {
+        src = src.substring(cap[0].length);
+      }
 
       continue;
     }

@@ -3810,23 +3810,6 @@ Array [
           Object {
             "marks": Array [],
             "object": "leaf",
-            "text": "",
-          },
-        ],
-        "object": "text",
-      },
-    ],
-    "object": "block",
-    "type": "paragraph",
-  },
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "leaves": Array [
-          Object {
-            "marks": Array [],
-            "object": "leaf",
             "text": "a new paragraph",
           },
         ],
@@ -4036,23 +4019,6 @@ Array [
           Object {
             "marks": Array [],
             "object": "leaf",
-            "text": "",
-          },
-        ],
-        "object": "text",
-      },
-    ],
-    "object": "block",
-    "type": "paragraph",
-  },
-  Object {
-    "data": Object {},
-    "nodes": Array [
-      Object {
-        "leaves": Array [
-          Object {
-            "marks": Array [],
-            "object": "leaf",
             "text": "a new paragraph",
           },
         ],
@@ -4193,6 +4159,32 @@ Array [
           Object {
             "data": Object {
               "align": "center",
+            },
+            "nodes": Array [
+              Object {
+                "data": Object {},
+                "nodes": Array [
+                  Object {
+                    "leaves": Array [
+                      Object {
+                        "marks": Array [],
+                        "object": "leaf",
+                        "text": "",
+                      },
+                    ],
+                    "object": "text",
+                  },
+                ],
+                "object": "block",
+                "type": "paragraph",
+              },
+            ],
+            "object": "block",
+            "type": "table-cell",
+          },
+          Object {
+            "data": Object {
+              "align": "right",
             },
             "nodes": Array [
               Object {

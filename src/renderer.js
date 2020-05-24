@@ -48,8 +48,8 @@ const RULES = [
           tableHeader = "";
           firstRow = true;
 
-          // trim removes trailing newline
-          return children.trim();
+          // table blocks should be surrounded by newline characters
+          return "\n" + children.trim() + "\n";
         case "table-cell": {
           switch (obj.getIn(["data", "align"])) {
             case "left":
